@@ -1,0 +1,10 @@
+[
+  {"id":"mm1","tier":"1-2","prompt":"Find the same animal as dog","choices":["cat","dog","fish"],"correct":"dog"},
+  {"id":"mm2","tier":"1-2","prompt":"Find the same fruit as apple","choices":["banana","apple","grape"],"correct":"apple"},
+  {"id":"mm3","tier":"3-4","prompt":"Match uppercase A","choices":["B","A","D"],"correct":"A"},
+  {"id":"mm4","tier":"3-4","prompt":"Match shape: circle","choices":["square","circle","triangle"],"correct":"circle"},
+  {"id":"mm5","tier":"5-7","prompt":"Match 7 + 1","choices":["8","9","6"],"correct":"8"},
+  {"id":"mm6","tier":"5-7","prompt":"Match opposite of 'up'","choices":["in","down","over"],"correct":"down"},
+  {"id":"mm7","tier":"8-10","prompt":"Match synonym of 'quick'","choices":["slow","fast","loud"],"correct":"fast"},
+  {"id":"mm8","tier":"8-10","prompt":"Match 5 x 3","choices":["10","12","15"],"correct":"15"}
+]

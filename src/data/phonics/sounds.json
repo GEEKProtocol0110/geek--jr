@@ -1,0 +1,10 @@
+[
+  {"id":"ph1","tier":"1-2","prompt":"Tap the sound for letter B","choices":["buh","mmm","sss"],"correct":"buh"},
+  {"id":"ph2","tier":"1-2","prompt":"Tap the sound for letter M","choices":["zzz","mmm","tuh"],"correct":"mmm"},
+  {"id":"ph3","tier":"3-4","prompt":"Which starts 'sun'?","choices":["sss","buh","rrr"],"correct":"sss"},
+  {"id":"ph4","tier":"3-4","prompt":"Which starts 'cat'?","choices":["kuh","fff","lll"],"correct":"kuh"},
+  {"id":"ph5","tier":"5-7","prompt":"Pick the long A sound","choices":["ay","ah","eh"],"correct":"ay"},
+  {"id":"ph6","tier":"5-7","prompt":"Which chunk sounds like 'ship'?","choices":["sh","ch","th"],"correct":"sh"},
+  {"id":"ph7","tier":"8-10","prompt":"Which vowel team says 'ee'?","choices":["ea","oa","au"],"correct":"ea"},
+  {"id":"ph8","tier":"8-10","prompt":"Pick the soft C sound","choices":["s","k","g"],"correct":"s"}
+]

@@ -1,0 +1,10 @@
+[
+  {"id":"st1","tier":"1-2","prompt":"First in bedtime: put on pajamas, then __","choices":["brush teeth","eat lunch","go outside"],"correct":"brush teeth"},
+  {"id":"st2","tier":"1-2","prompt":"After waking up, we __","choices":["go to sleep","eat breakfast","turn off sun"],"correct":"eat breakfast"},
+  {"id":"st3","tier":"3-4","prompt":"Plant story: seed, water, __","choices":["grow","melt","sleep"],"correct":"grow"},
+  {"id":"st4","tier":"3-4","prompt":"Rain day: clouds, rain, __","choices":["puddle","fire","snowman"],"correct":"puddle"},
+  {"id":"st5","tier":"5-7","prompt":"Write story order: plan, draft, __","choices":["revise","erase","sleep"],"correct":"revise"},
+  {"id":"st6","tier":"5-7","prompt":"School morning: wake, dress, __","choices":["breakfast","midnight snack","movie"],"correct":"breakfast"},
+  {"id":"st7","tier":"8-10","prompt":"Science steps: question, test, __","choices":["conclusion","nap","guess only"],"correct":"conclusion"},
+  {"id":"st8","tier":"8-10","prompt":"Team project: discuss, assign, __","choices":["build","quit","ignore"],"correct":"build"}
+]

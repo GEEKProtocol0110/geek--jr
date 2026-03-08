@@ -1,0 +1,10 @@
+[
+  {"id":"pt1","tier":"1-2","prompt":"What comes next: red, blue, red, ?","choices":["blue","green","red"],"correct":"blue"},
+  {"id":"pt2","tier":"1-2","prompt":"What comes next: star, star, star, ?","choices":["star","moon","sun"],"correct":"star"},
+  {"id":"pt3","tier":"3-4","prompt":"2, 4, 6, __","choices":["7","8","9"],"correct":"8"},
+  {"id":"pt4","tier":"3-4","prompt":"A, B, A, B, __","choices":["A","C","D"],"correct":"A"},
+  {"id":"pt5","tier":"5-7","prompt":"5, 10, 15, __","choices":["18","20","25"],"correct":"20"},
+  {"id":"pt6","tier":"5-7","prompt":"1, 1, 2, 3, __","choices":["5","4","6"],"correct":"5"},
+  {"id":"pt7","tier":"8-10","prompt":"3, 6, 12, 24, __","choices":["36","48","30"],"correct":"48"},
+  {"id":"pt8","tier":"8-10","prompt":"If all bloops are razz, and all razz are wugs, bloops are __","choices":["wugs","none","cars"],"correct":"wugs"}
+]
