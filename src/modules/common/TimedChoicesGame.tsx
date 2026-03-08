@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { loadSettings } from "@/lib/settings";
+import { useEffect, useState } from "react";
+import { DEFAULT_SETTINGS, loadSettings } from "@/lib/settings";
 import { loadFromStorage, saveToStorage } from "@/lib/storage";
 import { AgeTier, GameStats, GameStatsByTier } from "@/lib/types";
 
@@ -42,30 +42,34 @@ function shuffle<T>(items: T[]): T[] {
 }
 
 export default function TimedChoicesGame({ title, storageKey, prompts }: TimedChoicesGameProps) {
-  const settings = useMemo(() => loadSettings(), []);
-  const filtered = useMemo(
-    () => prompts.filter((p) => p.tier === settings.ageTier),
-    [prompts, settings.ageTier],
-  );
-
-  const sessionPrompts = useMemo(() => {
-    const pool = filtered.length ? filtered : prompts;
-    return shuffle(pool).slice(0, Math.min(settings.sessionSize, pool.length));
-  }, [filtered, prompts, settings.sessionSize]);
-
-  const [secondsLeft, setSecondsLeft] = useState<number>(settings.timeLimitSec);
+  const [settings, setSettings] = useState(DEFAULT_SETTINGS);
+  const [sessionPrompts, setSessionPrompts] = useState<ChoicePrompt[]>([]);
+  const [secondsLeft, setSecondsLeft] = useState<number>(DEFAULT_SETTINGS.timeLimitSec);
   const [index, setIndex] = useState(0);
   const [streak, setStreak] = useState(0);
   const [feedback, setFeedback] = useState("");
   const [ended, setEnded] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
   const [stats, setStats] = useState<GameStatsByTier>(EMPTY_BY_TIER);
+
+  useEffect(() => {
+    const loadedSettings = loadSettings();
+    const filtered = prompts.filter((p) => p.tier === loadedSettings.ageTier);
+    const pool = filtered.length ? filtered : prompts;
+    const preparedPrompts = shuffle(pool).slice(0, Math.min(loadedSettings.sessionSize, pool.length));
+
+    setSettings(loadedSettings);
+    setSessionPrompts(preparedPrompts);
+    setSecondsLeft(loadedSettings.timeLimitSec);
+    setHydrated(true);
+  }, [prompts]);
 
   useEffect(() => {
     setStats(loadFromStorage<GameStatsByTier>(storageKey, EMPTY_BY_TIER));
   }, [storageKey]);
 
   useEffect(() => {
-    if (ended) {
+    if (!hydrated || ended) {
       return;
     }
 
@@ -81,7 +85,7 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
     }, 1000);
 
     return () => window.clearInterval(timer);
-  }, [ended]);
+  }, [ended, hydrated]);
 
   const current = sessionPrompts[index];
 
@@ -135,6 +139,15 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
 
   const attempts = stats[settings.ageTier]?.totalAttempts ?? 0;
   const correctCount = stats[settings.ageTier]?.correctCount ?? 0;
+
+  if (!hydrated) {
+    return (
+      <section className="mx-auto w-full max-w-xl rounded-2xl bg-white p-6 shadow-lg ring-1 ring-slate-200">
+        <h1 className="text-2xl font-bold text-slate-900">{title}</h1>
+        <p className="mt-4 text-sm text-slate-600">Loading your session...</p>
+      </section>
+    );
+  }
 
   if (!sessionPrompts.length) {
     return <p className="rounded-xl bg-amber-100 p-4 text-amber-900">No prompts found for this activity.</p>;
