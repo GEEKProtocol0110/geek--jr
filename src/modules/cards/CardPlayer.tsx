@@ -25,12 +25,18 @@ export default function CardPlayer({ ageTier, sessionSize }: CardPlayerProps) {
     loadFromStorage<Record<string, 1 | 2 | 3>>(LEITNER_KEY, {}),
   );
 
-  const sessionCards = useMemo(
-    () => pickLeitnerSession(cardsForTier, leitnerState, sessionSize),
-    [cardsForTier, leitnerState, sessionSize],
+  // Keep this round fixed while mastery buckets change after each card.
+  const [sessionCards, setSessionCards] = useState(() =>
+    pickLeitnerSession(cardsForTier, leitnerState, sessionSize),
   );
 
   const current = sessionCards[index];
+
+  function hearWord() {
+    if (!current || typeof window === "undefined" || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance(current.answer));
+  }
 
   function markCard(correct: boolean) {
     if (!current) {
@@ -50,6 +56,12 @@ export default function CardPlayer({ ageTier, sessionSize }: CardPlayerProps) {
     setIndex((prev) => prev + 1);
   }
 
+  function startNewSession() {
+    setSessionCards(pickLeitnerSession(cardsForTier, leitnerState, sessionSize));
+    setIndex(0);
+    setShowAnswer(false);
+  }
+
   if (!cardsForTier.length) {
     return <p className="rounded-xl bg-amber-100 p-4 text-amber-900">No cards found for this age tier.</p>;
   }
@@ -61,7 +73,7 @@ export default function CardPlayer({ ageTier, sessionSize }: CardPlayerProps) {
         <p className="mt-2 text-slate-700">Session complete.</p>
         <button
           type="button"
-          onClick={() => setIndex(0)}
+          onClick={startNewSession}
           className="mt-4 rounded-lg bg-slate-900 px-4 py-2 font-semibold text-white hover:bg-slate-700"
         >
           Start new session
@@ -77,9 +89,17 @@ export default function CardPlayer({ ageTier, sessionSize }: CardPlayerProps) {
       <p className="mt-1 text-sm text-slate-600">Card {index + 1} of {Math.min(sessionSize, cardsForTier.length)}</p>
 
       <div className="mt-6 rounded-xl bg-indigo-50 p-6 text-center">
+        {current.visual && (
+          <span className="mb-4 block text-7xl" role="img" aria-label={current.answer}>
+            {current.visual}
+          </span>
+        )}
         <p className="text-xl font-semibold text-indigo-900">{current.question}</p>
         {showAnswer && <p className="mt-3 text-lg text-indigo-700">{current.answer}</p>}
+        <button type="button" onClick={hearWord} className="mt-4 rounded-lg bg-white px-5 py-3 font-bold text-indigo-800 ring-1 ring-indigo-200 hover:bg-indigo-100">🔊 Hear the word</button>
       </div>
+
+      {ageTier === "1-2" && <p className="mt-4 text-sm text-slate-600">Grown-up tip: Point to the picture and say the word together.</p>}
 
       <div className="mt-5 flex flex-wrap gap-3">
         <button
