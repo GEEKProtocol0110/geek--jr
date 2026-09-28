@@ -23,6 +23,7 @@ export interface CardItem {
   tier: AgeTier;
   question: string;
   answer: string;
+  visual?: string;
 }
 
 export interface PhonicsItem {

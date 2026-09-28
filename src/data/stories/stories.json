@@ -6,5 +6,9 @@
   {"id":"st5","tier":"5-7","prompt":"Write story order: plan, draft, __","choices":["revise","erase","sleep"],"correct":"revise"},
   {"id":"st6","tier":"5-7","prompt":"School morning: wake, dress, __","choices":["breakfast","midnight snack","movie"],"correct":"breakfast"},
   {"id":"st7","tier":"8-10","prompt":"Science steps: question, test, __","choices":["conclusion","nap","guess only"],"correct":"conclusion"},
-  {"id":"st8","tier":"8-10","prompt":"Team project: discuss, assign, __","choices":["build","quit","ignore"],"correct":"build"}
+  {"id":"st8","tier":"8-10","prompt":"Team project: discuss, assign, __","choices":["build","quit","ignore"],"correct":"build"},
+  {"id":"faith1","tier":"1-2","pack":"christian","prompt":"Noah built a big __","choices":["boat","car","plane"],"correct":"boat"},
+  {"id":"faith2","tier":"3-4","pack":"christian","prompt":"In the Bible, Noah helped the animals into the __","choices":["ark","castle","bus"],"correct":"ark"},
+  {"id":"faith3","tier":"5-7","pack":"christian","prompt":"David faced Goliath with a sling and a __","choices":["stone","pencil","spoon"],"correct":"stone"},
+  {"id":"faith4","tier":"8-10","pack":"christian","prompt":"In the Good Samaritan story, the traveler stopped to __","choices":["help someone hurt","hide","go shopping"],"correct":"help someone hurt"}
 ]

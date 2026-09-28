@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DEFAULT_SETTINGS, loadSettings, saveSettings } from "@/lib/settings";
 import { loadFromStorage } from "@/lib/storage";
 import { AgeTier, GameStatsByTier, GeekJrSettings, SessionSize, TimeLimitSec } from "@/lib/types";
@@ -11,9 +11,8 @@ const SESSION_SIZES: SessionSize[] = [3, 5, 10];
 const TIME_LIMITS: TimeLimitSec[] = [60, 120, 180];
 
 const GAME_KEYS = [
-  { id: "cards", label: "Index Cards", key: "geekjr_cards_leitner_v1" },
   { id: "phonics", label: "Phonics Tap", key: "geekjr_stats_phonics_v1" },
-  { id: "memory", label: "Memory Match", key: "geekjr_stats_memory_v1" },
+  { id: "memory", label: "Memory Match", key: "geekjr_stats_memory_v2" },
   { id: "patterns", label: "Patterns & Logic", key: "geekjr_stats_patterns_v1" },
   { id: "stories", label: "Story Sequence", key: "geekjr_stats_stories_v1" },
 ];
@@ -35,10 +34,23 @@ function statsSummary(statsByTier: GameStatsByTier) {
 }
 
 export default function ParentPage() {
-  const [settings, setSettings] = useState<GeekJrSettings>(() => ({
-    ...DEFAULT_SETTINGS,
-    ...loadSettings(),
-  }));
+  const [settings, setSettings] = useState<GeekJrSettings>(DEFAULT_SETTINGS);
+  const [stats, setStats] = useState<Record<string, ReturnType<typeof statsSummary>>>({});
+  const [practicedCards, setPracticedCards] = useState(0);
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      setSettings(loadSettings());
+      setPracticedCards(Object.keys(loadFromStorage<Record<string, 1 | 2 | 3>>("geekjr_cards_leitner_v1", {})).length);
+      setStats(Object.fromEntries(GAME_KEYS.map((game) => {
+        const raw = loadFromStorage<GameStatsByTier>(game.key, {
+          "1-2": EMPTY, "3-4": EMPTY, "5-7": EMPTY, "8-10": EMPTY,
+        });
+        return [game.id, statsSummary(raw)];
+      })));
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   function update<K extends keyof GeekJrSettings>(key: K, value: GeekJrSettings[K]) {
     const next = { ...settings, [key]: value };
@@ -109,20 +121,15 @@ export default function ParentPage() {
               onChange={(e) => update("christianPacks", e.target.checked)}
               className="size-4"
             />
-            Enable Christian packs
+            Include Bible story questions
           </label>
         </div>
 
-        <h2 className="mt-8 text-xl font-bold text-slate-900">Stats</h2>
+        <h2 className="mt-8 text-xl font-bold text-slate-900">Progress on this device</h2>
+        <p className="mt-2 text-sm text-slate-600">Index Cards: {practicedCards} unique cards practiced</p>
         <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {GAME_KEYS.map((game) => {
-            const raw = loadFromStorage<GameStatsByTier>(game.key, {
-              "1-2": EMPTY,
-              "3-4": EMPTY,
-              "5-7": EMPTY,
-              "8-10": EMPTY,
-            });
-            const summary = statsSummary(raw);
+            const summary = stats[game.id] ?? EMPTY;
 
             return (
               <article key={game.id} className="rounded-xl border border-slate-200 bg-slate-50 p-4">

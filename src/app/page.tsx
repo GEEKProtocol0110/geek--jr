@@ -2,61 +2,75 @@ import Link from "next/link";
 
 const activities = [
   {
-    title: "Index Cards",
-    description: "Quick flashcard rounds with spaced repetition.",
+    number: "01",
+    title: "Picture Cards",
+    description: "See it. Say it. Remember it.",
     href: "/cards",
+    color: "bg-amber-100 text-amber-950",
   },
   {
+    number: "02",
     title: "Phonics Tap",
-    description: "Hear a sound idea and tap the correct match.",
+    description: "Listen, read, and choose a sound.",
     href: "/phonics",
+    color: "bg-sky-100 text-sky-950",
   },
   {
+    number: "03",
     title: "Memory Match",
-    description: "Build recall by matching the right pair.",
+    description: "Flip cards and find the pairs.",
     href: "/memory",
+    color: "bg-emerald-100 text-emerald-950",
   },
   {
+    number: "04",
     title: "Patterns & Logic",
-    description: "Find what comes next in simple logic chains.",
+    description: "Spot what comes next.",
     href: "/patterns",
+    color: "bg-violet-100 text-violet-950",
   },
   {
+    number: "05",
     title: "Story Sequence",
-    description: "Pick what happens next in a short sequence.",
+    description: "Choose how the story continues.",
     href: "/stories",
+    color: "bg-rose-100 text-rose-950",
   },
 ];
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-sky-50 via-white to-lime-50 px-4 py-10">
+    <main className="min-h-screen bg-[#f7f8f2] px-4 py-8 sm:py-12">
       <section className="mx-auto max-w-5xl">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-start justify-between gap-4">
           <div>
-            <h1 className="text-4xl font-black tracking-tight text-slate-900">Geek Jr</h1>
-            <p className="mt-2 text-slate-600">Playful learning activities for ages 1 to 10.</p>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-700">Learn through play</p>
+            <h1 className="mt-2 text-5xl font-black tracking-tight text-slate-900">Geek Jr<span className="text-emerald-600">.</span></h1>
+            <p className="mt-3 max-w-md text-base text-slate-600">Small activities for curious kids, ages 1–10. Pick one and begin.</p>
           </div>
           <Link
             href="/parent"
-            className="rounded-xl bg-slate-900 px-4 py-2 text-sm font-bold text-white hover:bg-slate-700"
+            className="rounded-xl bg-slate-900 px-4 py-3 text-sm font-bold text-white hover:bg-slate-700"
           >
-            Parent Mode
+            Parent settings
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <h2 className="mt-12 text-lg font-bold text-slate-800">Choose an activity</h2>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {activities.map((activity) => (
             <Link
               key={activity.href}
               href={activity.href}
-              className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+              className={`group flex min-h-48 flex-col justify-between rounded-2xl border border-black/5 p-6 transition hover:-translate-y-1 hover:shadow-lg focus-visible:outline-4 focus-visible:outline-emerald-600 ${activity.color}`}
             >
-              <h2 className="text-xl font-bold text-slate-900">{activity.title}</h2>
-              <p className="mt-2 text-sm text-slate-600">{activity.description}</p>
+              <span className="text-sm font-bold opacity-60">{activity.number} / 05</span>
+              <div><h3 className="text-2xl font-bold">{activity.title} <span aria-hidden="true" className="inline-block transition group-hover:translate-x-1">↗</span></h3>
+              <p className="mt-2 text-sm opacity-80">{activity.description}</p></div>
             </Link>
           ))}
         </div>
+        <p className="mt-7 text-center text-sm text-slate-500">Progress stays on this device. No account needed.</p>
       </section>
     </main>
   );
