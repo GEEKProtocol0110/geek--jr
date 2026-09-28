@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DEFAULT_SETTINGS, loadSettings } from "@/lib/settings";
 import { loadFromStorage, saveToStorage } from "@/lib/storage";
 import { AgeTier, GameStats, GameStatsByTier } from "@/lib/types";
@@ -11,6 +11,7 @@ export interface ChoicePrompt {
   prompt: string;
   choices: string[];
   correct: string;
+  pack?: "christian";
 }
 
 interface TimedChoicesGameProps {
@@ -48,14 +49,21 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
   const [index, setIndex] = useState(0);
   const [streak, setStreak] = useState(0);
   const [feedback, setFeedback] = useState("");
+  const [triedChoices, setTriedChoices] = useState<string[]>([]);
+  const lockedRef = useRef(false);
+  const triedRef = useRef(new Set<string>());
+  const advanceTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [ended, setEnded] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const [stats, setStats] = useState<GameStatsByTier>(EMPTY_BY_TIER);
+  const [roundAttempts, setRoundAttempts] = useState(0);
+  const [roundCorrect, setRoundCorrect] = useState(0);
+  const [roundBestStreak, setRoundBestStreak] = useState(0);
 
   useEffect(() => {
     const loadedSettings = loadSettings();
-    const filtered = prompts.filter((p) => p.tier === loadedSettings.ageTier);
-    const pool = filtered.length ? filtered : prompts;
+    const pool = prompts.filter((p) =>
+      p.tier === loadedSettings.ageTier && (p.pack !== "christian" || loadedSettings.christianPacks));
     const preparedPrompts = shuffle(pool).slice(0, Math.min(loadedSettings.sessionSize, pool.length));
 
     setSettings(loadedSettings);
@@ -68,8 +76,12 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
     setStats(loadFromStorage<GameStatsByTier>(storageKey, EMPTY_BY_TIER));
   }, [storageKey]);
 
+  useEffect(() => () => {
+    if (advanceTimeout.current) clearTimeout(advanceTimeout.current);
+  }, []);
+
   useEffect(() => {
-    if (!hydrated || ended) {
+    if (!hydrated || ended || settings.ageTier === "1-2") {
       return;
     }
 
@@ -85,7 +97,7 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
     }, 1000);
 
     return () => window.clearInterval(timer);
-  }, [ended, hydrated]);
+  }, [ended, hydrated, settings.ageTier]);
 
   const current = sessionPrompts[index];
 
@@ -114,19 +126,29 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
   }
 
   function handleChoice(choice: string) {
-    if (!current || ended) {
+    if (!current || ended || lockedRef.current || triedRef.current.has(choice)) {
       return;
     }
+
+    triedRef.current.add(choice);
+    setTriedChoices([...triedRef.current]);
 
     const wasCorrect = choice === current.correct;
     const nextStreak = wasCorrect ? streak + 1 : 0;
 
     setStreak(nextStreak);
-    setFeedback(wasCorrect ? "Correct!" : "Try again.");
+    setFeedback(wasCorrect ? "Correct!" : "Try another one.");
+    setRoundAttempts((prev) => prev + 1);
+    if (wasCorrect) setRoundCorrect((prev) => prev + 1);
+    setRoundBestStreak((prev) => Math.max(prev, nextStreak));
     updateStats(wasCorrect, nextStreak);
 
     if (wasCorrect) {
-      setTimeout(() => {
+      lockedRef.current = true;
+      advanceTimeout.current = setTimeout(() => {
+        lockedRef.current = false;
+        triedRef.current = new Set();
+        setTriedChoices([]);
         setFeedback("");
         setIndex((prev) => prev + 1);
       }, 350);
@@ -137,8 +159,11 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
     window.location.reload();
   }
 
-  const attempts = stats[settings.ageTier]?.totalAttempts ?? 0;
-  const correctCount = stats[settings.ageTier]?.correctCount ?? 0;
+  function readText(value: string) {
+    if (typeof window === "undefined" || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance(value));
+  }
 
   if (!hydrated) {
     return (
@@ -159,7 +184,7 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
       <p className="mt-1 text-sm text-slate-600">Age tier: {settings.ageTier}</p>
 
       <div className="mt-4 grid grid-cols-3 gap-3 text-center text-sm">
-        <div className="rounded-lg bg-slate-100 p-2">Timer: {secondsLeft}s</div>
+        <div className="rounded-lg bg-slate-100 p-2">{settings.ageTier === "1-2" ? "No timer" : `Timer: ${secondsLeft}s`}</div>
         <div className="rounded-lg bg-slate-100 p-2">Progress: {Math.min(index + 1, sessionPrompts.length)}/{sessionPrompts.length}</div>
         <div className="rounded-lg bg-slate-100 p-2">Streak: {streak}</div>
       </div>
@@ -168,27 +193,33 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
         <>
           <div className="mt-6 rounded-xl bg-sky-50 p-4 text-center text-lg font-semibold text-sky-900">
             {current.prompt}
+            <button type="button" onClick={() => readText(current.prompt)} className="mt-3 block w-full rounded-lg bg-sky-900 px-4 py-3 text-base text-white hover:bg-sky-800">
+              🔊 Hear the question
+            </button>
           </div>
           <div className="mt-4 grid gap-3">
             {current.choices.map((choice) => (
-              <button
-                key={`${current.id}-${choice}`}
-                type="button"
-                onClick={() => handleChoice(choice)}
-                className="rounded-xl border border-slate-300 bg-white px-4 py-3 text-left font-medium text-slate-800 transition hover:bg-slate-50"
-              >
-                {choice}
-              </button>
+              <div key={`${current.id}-${choice}`} className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => handleChoice(choice)}
+                  disabled={triedChoices.includes(choice)}
+                  className="min-h-14 flex-1 rounded-xl border border-slate-300 bg-white px-4 py-3 text-left text-lg font-medium text-slate-800 transition hover:bg-slate-50 disabled:cursor-default disabled:bg-slate-100 disabled:text-slate-500"
+                >
+                  {choice}
+                </button>
+                <button type="button" aria-label={`Hear ${choice}`} onClick={() => readText(choice)} className="min-w-14 rounded-xl border border-sky-200 bg-sky-50 text-lg hover:bg-sky-100">🔊</button>
+              </div>
             ))}
           </div>
-          <p className="mt-4 min-h-6 text-sm font-semibold text-slate-700">{feedback}</p>
+          <p className="mt-4 min-h-6 text-sm font-semibold text-slate-700" role="status">{feedback}</p>
         </>
       ) : (
         <div className="mt-6 rounded-xl bg-emerald-50 p-4 text-emerald-900">
           <h2 className="text-xl font-bold">Session Complete</h2>
-          <p className="mt-2">Attempts: {attempts}</p>
-          <p>Correct: {correctCount}</p>
-          <p>Best streak: {stats[settings.ageTier]?.bestStreak ?? 0}</p>
+          <p className="mt-2">This round: {roundCorrect} correct in {roundAttempts} attempts</p>
+          <p>Best streak this round: {roundBestStreak}</p>
+          <p className="mt-2 text-sm">All-time correct: {stats[settings.ageTier]?.correctCount ?? 0}</p>
           <button
             type="button"
             onClick={restart}
