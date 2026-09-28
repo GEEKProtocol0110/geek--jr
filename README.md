@@ -27,6 +27,8 @@ Open **Parent settings** from the home page. Choose an age tier (`1–2`, `3–4
 
 Learning progress and preferences stay in this browser's localStorage. They do not sync across devices and will be lost if browser data is cleared. The progress panel shows lifetime attempts for activities, plus the number of distinct picture cards practiced; each game shows its own round result separately.
 
+Memory Match now uses a new progress key because the previous activity was a question quiz, so its old quiz scores are not counted as matching pairs. The old data remains in the browser.
+
 ## Stack
 
 Next.js App Router, React, TypeScript, Tailwind CSS, and browser speech synthesis. Speech playback depends on the device's available voices. There is no backend or wallet integration in this early learning app.
