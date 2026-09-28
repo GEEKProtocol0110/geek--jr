@@ -1,115 +1,32 @@
 # Geek Jr
 
-Geek Jr is a modular learning app for children ages 1-10, built with Next.js 16 App Router, TypeScript, and Tailwind CSS.
+Five small learning activities for ages 1–10. Parents choose an age tier and session length; children can practice without an account. Geek Jr grew from a picture and word card idea for the youngest learners.
 
-It includes 5 activities plus a Parent Mode panel:
+| Activity | What children do |
+| --- | --- |
+| Picture Cards | See a picture, hear the word, and mark whether they know it |
+| Phonics Tap | Listen to a prompt and sounds, then pick an answer |
+| Memory Match | Flip picture cards to find matching pairs |
+| Patterns & Logic | Choose what comes next |
+| Story Sequence | Complete a short story, with optional Bible story questions |
 
-- Index Cards
-- Phonics Tap
-- Memory Match
-- Patterns and Logic
-- Story Sequence
-- Parent Mode (settings + stats)
+## Run locally
 
-## Tech Stack
-
-- Next.js 16 (App Router)
-- TypeScript
-- Tailwind CSS
-- localStorage for persistence (no backend yet)
-
-## Project Structure
-
-```text
-src/
-	app/
-		page.tsx
-		cards/page.tsx
-		phonics/page.tsx
-		memory/page.tsx
-		patterns/page.tsx
-		stories/page.tsx
-		parent/page.tsx
-	modules/
-		cards/CardPlayer.tsx
-		common/TimedChoicesGame.tsx
-		phonics/PhonicsGame.tsx
-		memory/MemoryGame.tsx
-		patterns/PatternGame.tsx
-		stories/StoryGame.tsx
-	data/
-		decks/starter-30.json
-		phonics/sounds.json
-		memory/pairs.json
-		patterns/patterns.json
-		stories/stories.json
-	lib/
-		settings.ts
-		storage.ts
-		leitner.ts
-		types.ts
-```
-
-## Local Development
-
-Install dependencies:
+Requires Node.js 20 or newer.
 
 ```bash
-npm install
+npm ci
+npm run dev
 ```
 
-Run dev server on port 3000:
+Open `http://localhost:3000`. Check code with `npm run lint` and `npm run build`.
 
-```bash
-npm run dev -- -p 3000
-```
+## Parent settings
 
-Open `http://localhost:3000`.
+Open **Parent settings** from the home page. Choose an age tier (`1–2`, `3–4`, `5–7`, `8–10`), a round size, and a time limit. Ages 1–2 have no timer. Bible story questions are off by default and appear in Story Sequence when enabled. The current starter content includes one Bible question per tier.
 
-## Routes
+Learning progress and preferences stay in this browser's localStorage. They do not sync across devices and will be lost if browser data is cleared. The progress panel shows lifetime attempts for activities, plus the number of distinct picture cards practiced; each game shows its own round result separately.
 
-- `/` Activity Hub
-- `/cards` Index Cards
-- `/phonics` Phonics Tap
-- `/memory` Memory Match
-- `/patterns` Patterns and Logic
-- `/stories` Story Sequence
-- `/parent` Parent Mode
+## Stack
 
-## Settings and Persistence
-
-Parent Mode stores shared app settings in:
-
-- `geekjr_settings_v2`
-
-Settings shape:
-
-- `sessionSize`: `3 | 5 | 10`
-- `timeLimitSec`: `60 | 120 | 180`
-- `ageTier`: `"1-2" | "3-4" | "5-7" | "8-10"`
-- `christianPacks`: `boolean`
-
-Game stats are saved per game and age tier in localStorage:
-
-- `geekjr_stats_phonics_v1`
-- `geekjr_stats_memory_v1`
-- `geekjr_stats_patterns_v1`
-- `geekjr_stats_stories_v1`
-
-Cards module data/progress key:
-
-- `geekjr_cards_leitner_v1`
-
-## Quality Checks
-
-Run lint:
-
-```bash
-npm run lint
-```
-
-Run production build:
-
-```bash
-npm run build
-```
+Next.js App Router, React, TypeScript, Tailwind CSS, and browser speech synthesis. Speech playback depends on the device's available voices. There is no backend or wallet integration in this early learning app.
