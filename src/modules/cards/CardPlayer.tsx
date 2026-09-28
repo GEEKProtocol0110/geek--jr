@@ -69,7 +69,7 @@ export default function CardPlayer({ ageTier, sessionSize }: CardPlayerProps) {
   if (!current) {
     return (
       <section className="mx-auto w-full max-w-xl rounded-2xl bg-white p-6 shadow-lg ring-1 ring-slate-200">
-        <h1 className="text-2xl font-bold text-slate-900">Index Cards</h1>
+        <h1 className="text-2xl font-bold text-slate-900">Picture Cards</h1>
         <p className="mt-2 text-slate-700">Session complete.</p>
         <button
           type="button"
@@ -84,19 +84,19 @@ export default function CardPlayer({ ageTier, sessionSize }: CardPlayerProps) {
 
   return (
     <section className="mx-auto w-full max-w-xl rounded-2xl bg-white p-6 shadow-lg ring-1 ring-slate-200">
-      <h1 className="text-2xl font-bold text-slate-900">Index Cards</h1>
+      <h1 className="text-2xl font-bold text-slate-900">Picture Cards</h1>
       <p className="mt-1 text-sm text-slate-600">Age tier: {ageTier} · Session: {Math.min(sessionSize, cardsForTier.length)} cards</p>
       <p className="mt-1 text-sm text-slate-600">Card {index + 1} of {Math.min(sessionSize, cardsForTier.length)}</p>
 
-      <div className="mt-6 rounded-xl bg-indigo-50 p-6 text-center">
+      <div className="mt-6 rounded-xl bg-teal-50 p-6 text-center">
         {current.visual && (
           <span className="mb-4 block text-7xl" role="img" aria-label={current.answer}>
             {current.visual}
           </span>
         )}
-        <p className="text-xl font-semibold text-indigo-900">{current.question}</p>
-        {showAnswer && <p className="mt-3 text-lg text-indigo-700">{current.answer}</p>}
-        <button type="button" onClick={hearWord} className="mt-4 rounded-lg bg-white px-5 py-3 font-bold text-indigo-800 ring-1 ring-indigo-200 hover:bg-indigo-100">🔊 Hear the word</button>
+        <p className="text-xl font-semibold text-teal-950">{current.question}</p>
+        {showAnswer && <p className="mt-3 text-lg text-teal-800">{current.answer}</p>}
+        <button type="button" onClick={hearWord} className="mt-4 rounded-lg bg-white px-5 py-3 font-bold text-teal-900 ring-1 ring-teal-200 hover:bg-teal-100">🔊 Hear the word</button>
       </div>
 
       {ageTier === "1-2" && <p className="mt-4 text-sm text-slate-600">Grown-up tip: Point to the picture and say the word together.</p>}
@@ -105,7 +105,7 @@ export default function CardPlayer({ ageTier, sessionSize }: CardPlayerProps) {
         <button
           type="button"
           onClick={() => setShowAnswer((prev) => !prev)}
-          className="rounded-lg bg-indigo-700 px-4 py-2 font-semibold text-white hover:bg-indigo-800"
+          className="rounded-lg bg-teal-800 px-4 py-2 font-semibold text-white hover:bg-teal-900"
         >
           {showAnswer ? "Hide answer" : "Show answer"}
         </button>
