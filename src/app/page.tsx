@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const assetBasePath = process.env.GITHUB_PAGES === "true" ? "/geek-jr" : "";
+
+
 const activities = [
   { number: "01", title: "Picture Cards", description: "See it. Say it. Remember it.", href: "/cards", icon: "🖼️", tint: "bg-amber-100" },
   { number: "02", title: "Phonics Tap", description: "Listen and find the sound.", href: "/phonics", icon: "🔤", tint: "bg-sky-100" },
@@ -8,6 +11,7 @@ const activities = [
   { number: "04", title: "Patterns & Logic", description: "What comes next?", href: "/patterns", icon: "✦", tint: "bg-violet-100" },
   { number: "05", title: "Story Sequence", description: "Choose how the story goes.", href: "/stories", icon: "📖", tint: "bg-rose-100" },
 ];
+
 
 export default function HomePage() {
   return (
@@ -25,11 +29,12 @@ export default function HomePage() {
           </div>
           <div className="hero-art" aria-label="Geek Protocol mascot">
             <span className="art-tag top">GEEK JR. / 01—10</span>
-            <Image src="/geek-protocol-logo.png" width={300} height={300} alt="Geek Protocol robot mascot" priority />
+            <Image src={`${assetBasePath}/geek-protocol-logo.png`} width={300} height={300} alt="Geek Protocol robot mascot" priority />
             <span className="art-tag bottom">LEARN THROUGH PLAY ·</span>
           </div>
         </div>
       </section>
+
 
       <section className="activities-section" id="activities" aria-labelledby="activities-title">
         <div className="section-heading">
@@ -55,3 +60,4 @@ export default function HomePage() {
     </main>
   );
 }
+

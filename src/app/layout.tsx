@@ -3,10 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import "./globals.css";
 
+const assetBasePath = process.env.GITHUB_PAGES === "true" ? "/geek-jr" : "";
+
 export const metadata: Metadata = {
   title: { default: "Geek Jr | Learn through play", template: "%s | Geek Jr" },
   description: "Thoughtful early-learning activities for ages 1–10, from Geek Protocol.",
-  icons: { icon: "/favicon.svg" },
+  icons: { icon: `${assetBasePath}/favicon.svg` },
 };
 
 export default function RootLayout({
@@ -21,7 +23,7 @@ export default function RootLayout({
         <header className="site-header">
           <div className="site-header-inner">
             <Link href="/" className="site-brand" aria-label="Geek Jr home">
-              <Image src="/geek-protocol-logo.png" width={44} height={44} alt="" className="brand-icon" />
+              <Image src={`${assetBasePath}/geek-protocol-logo.png`} width={44} height={44} alt="" className="brand-icon" />
               <span className="brand-wordmark">GEEK<span>JR.</span><small>BY GEEK PROTOCOL</small></span>
             </Link>
             <nav aria-label="Main navigation" className="site-nav">
