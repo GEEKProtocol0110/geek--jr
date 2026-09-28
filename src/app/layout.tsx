@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Geek Jr",
-  description: "Five playful learning activities for kids ages 1–10. Picture cards, phonics, memory, patterns, and stories.",
+  title: { default: "Geek Jr | Learn through play", template: "%s | Geek Jr" },
+  description: "Thoughtful early-learning activities for ages 1–10, from Geek Protocol.",
+  icons: { icon: "/favicon.svg" },
 };
 
 export default function RootLayout({
@@ -13,7 +16,27 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <a className="skip-link" href="#main-content">Skip to content</a>
+        <header className="site-header">
+          <div className="site-header-inner">
+            <Link href="/" className="site-brand" aria-label="Geek Jr home">
+              <Image src="/geek-protocol-logo.png" width={44} height={44} alt="" className="brand-icon" />
+              <span className="brand-wordmark">GEEK<span>JR.</span><small>BY GEEK PROTOCOL</small></span>
+            </Link>
+            <nav aria-label="Main navigation" className="site-nav">
+              <Link href="/#activities">Activities</Link>
+              <Link href="/parent" className="nav-parent">Parent settings <span aria-hidden="true">↗</span></Link>
+            </nav>
+          </div>
+        </header>
+        {children}
+        <footer className="site-footer">
+          <span>GEEK JR. <small>BY GEEK PROTOCOL</small></span>
+          <p>Little questions. Big curiosity.</p>
+          <a href="https://geekprotocol.xyz" target="_blank" rel="noreferrer">Explore Geek Protocol <span aria-hidden="true">↗</span></a>
+        </footer>
+      </body>
     </html>
   );
 }

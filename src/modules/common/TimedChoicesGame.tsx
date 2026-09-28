@@ -191,9 +191,9 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
 
       {!ended && current ? (
         <>
-          <div className="mt-6 rounded-xl bg-sky-50 p-4 text-center text-lg font-semibold text-sky-900">
+          <div className="mt-6 rounded-xl bg-teal-50 p-4 text-center text-lg font-semibold text-teal-950">
             {current.prompt}
-            <button type="button" onClick={() => readText(current.prompt)} className="mt-3 block w-full rounded-lg bg-sky-900 px-4 py-3 text-base text-white hover:bg-sky-800">
+            <button type="button" onClick={() => readText(current.prompt)} className="mt-3 block w-full rounded-lg bg-teal-900 px-4 py-3 text-base text-white hover:bg-teal-800">
               🔊 Hear the question
             </button>
           </div>
@@ -208,7 +208,7 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
                 >
                   {choice}
                 </button>
-                <button type="button" aria-label={`Hear ${choice}`} onClick={() => readText(choice)} className="min-w-14 rounded-xl border border-sky-200 bg-sky-50 text-lg hover:bg-sky-100">🔊</button>
+                <button type="button" aria-label={`Hear ${choice}`} onClick={() => readText(choice)} className="min-w-14 rounded-xl border border-teal-200 bg-teal-50 text-lg hover:bg-teal-100">🔊</button>
               </div>
             ))}
           </div>

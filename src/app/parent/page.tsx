@@ -59,14 +59,15 @@ export default function ParentPage() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 px-4 py-8">
+    <main id="main-content" className="activity-page">
       <section className="mx-auto max-w-4xl rounded-2xl bg-white p-6 shadow ring-1 ring-slate-200">
         <div className="flex items-center justify-between gap-4">
-          <h1 className="text-3xl font-black text-slate-900">Parent Mode</h1>
-          <Link href="/" className="text-sm font-semibold text-slate-700 hover:text-slate-900">
-            Back to hub
+          <h1 className="text-3xl font-black text-slate-900">Parent settings</h1>
+          <Link href="/#activities" className="back-link">
+            <span aria-hidden="true">←</span> All activities
           </Link>
         </div>
+        <p className="mt-3 text-sm text-slate-600">Choose the learning level and round length. Your settings stay on this device.</p>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           <label className="grid gap-2 text-sm font-semibold text-slate-700">
@@ -97,6 +98,7 @@ export default function ParentPage() {
                 </option>
               ))}
             </select>
+            <span className="text-xs font-normal text-slate-500">Ages 1–2 always play without a timer.</span>
           </label>
 
           <label className="grid gap-2 text-sm font-semibold text-slate-700">
@@ -126,7 +128,7 @@ export default function ParentPage() {
         </div>
 
         <h2 className="mt-8 text-xl font-bold text-slate-900">Progress on this device</h2>
-        <p className="mt-2 text-sm text-slate-600">Index Cards: {practicedCards} unique cards practiced</p>
+        <p className="mt-2 text-sm text-slate-600">Picture Cards: {practicedCards} unique cards practiced</p>
         <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {GAME_KEYS.map((game) => {
             const summary = stats[game.id] ?? EMPTY;

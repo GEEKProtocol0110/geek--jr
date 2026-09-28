@@ -166,7 +166,7 @@ export default function MemoryGame() {
               onClick={() => flip(tile)}
               disabled={ended || matched.includes(tile.id)}
               aria-label={visible ? tile.label : `Hidden card ${index + 1}`}
-              className={`flex min-h-28 flex-col items-center justify-center rounded-xl border-2 p-3 text-slate-900 transition focus-visible:outline-4 focus-visible:outline-sky-500 ${matched.includes(tile.id) ? "border-emerald-500 bg-emerald-50" : visible ? "border-sky-500 bg-sky-50" : "border-slate-300 bg-slate-100 hover:bg-slate-200"}`}
+              className={`flex min-h-28 flex-col items-center justify-center rounded-xl border-2 p-3 text-slate-900 transition focus-visible:outline-4 focus-visible:outline-teal-500 ${matched.includes(tile.id) ? "border-emerald-500 bg-emerald-50" : visible ? "border-teal-500 bg-teal-50" : "border-slate-300 bg-slate-100 hover:bg-slate-200"}`}
             >
               {visible ? <><span className="text-4xl" aria-hidden="true">{tile.visual}</span><span className="mt-1 font-semibold">{tile.label}</span></> : <span className="text-3xl" aria-hidden="true">?</span>}
             </button>

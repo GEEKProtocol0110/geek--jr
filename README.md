@@ -1,34 +1,61 @@
-# Geek Jr
+![Geek Jr — Curiosity starts here](public/geek-jr-banner.svg)
 
-Five small learning activities for ages 1–10. Parents choose an age tier and session length; children can practice without an account. Geek Jr grew from a picture and word card idea for the youngest learners.
+<p align="center"><strong>Curiosity starts here.</strong><br/>Five focused learning activities for children ages 1–10, from Geek Protocol.</p>
 
-| Activity | What children do |
+<p align="center">
+  <a href="https://github.com/GEEKProtocol0110/geek-jr/actions/workflows/ci.yml"><img src="https://github.com/GEEKProtocol0110/geek-jr/actions/workflows/ci.yml/badge.svg" alt="Build status"/></a>
+  <img src="https://img.shields.io/badge/Next.js-16-101820" alt="Next.js 16"/>
+  <img src="https://img.shields.io/badge/Ages-1%E2%80%9310-228d74" alt="Ages 1 through 10"/>
+</p>
+
+Geek Jr turns short practice sessions into a simple daily learning habit. Parents choose a learning level and session length; children can begin without an account. It grew from picture and word cards for the youngest learners.
+
+## Activities
+
+| Activity | What happens |
 | --- | --- |
-| Picture Cards | See a picture, hear the word, and mark whether they know it |
-| Phonics Tap | Listen to a prompt and sounds, then pick an answer |
-| Memory Match | Flip picture cards to find matching pairs |
-| Patterns & Logic | Choose what comes next |
-| Story Sequence | Complete a short story, with optional Bible story questions |
+| **Picture Cards** | See a picture or prompt, hear a word, and mark it “Got it” or “Need practice” |
+| **Phonics Tap** | Hear a prompt or choice, then pick the matching sound |
+| **Memory Match** | Flip cards to find picture pairs |
+| **Patterns & Logic** | Choose what comes next |
+| **Story Sequence** | Complete a short sequence; optional Bible story questions |
 
-## Run locally
+Content is organized into four age ranges: **1–2**, **3–4**, **5–7**, and **8–10**. The youngest range has visual prompts and no timer. This is a starter library, not a complete curriculum; parental guidance is recommended, especially for children who are not reading yet.
 
-Requires Node.js 20 or newer.
+## Run the app
+
+Use Node.js 20.9 or newer.
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Open `http://localhost:3000`. Check code with `npm run lint` and `npm run build`.
+Open `http://localhost:3000`. The home page links to every activity and to **Parent settings**.
 
-## Parent settings
+```bash
+npm run lint
+npm run build
+```
 
-Open **Parent settings** from the home page. Choose an age tier (`1–2`, `3–4`, `5–7`, `8–10`), a round size, and a time limit. Ages 1–2 have no timer. Bible story questions are off by default and appear in Story Sequence when enabled. The current starter content includes one Bible question per tier.
+The same checks run in [GitHub Actions](.github/workflows/ci.yml) for pull requests and pushes to `main`.
 
-Learning progress and preferences stay in this browser's localStorage. They do not sync across devices and will be lost if browser data is cleared. The progress panel shows lifetime attempts for activities, plus the number of distinct picture cards practiced; each game shows its own round result separately.
+## How it works
 
-Memory Match now uses a new progress key because the previous activity was a question quiz, so its old quiz scores are not counted as matching pairs. The old data remains in the browser.
+```text
+src/app/         Next.js pages and site layout
+src/modules/     Picture cards and activity games
+src/data/        Age-tiered starter content in JSON
+src/lib/         Shared settings, types, and browser storage
+public/         Brand artwork and icon
+```
 
-## Stack
+Parent settings control age range, round length, time limit for older learners, and whether Bible story questions appear. Preferences and progress are saved in this browser only; they do not sync between devices. See [privacy and storage](docs/PRIVACY.md) for details.
 
-Next.js App Router, React, TypeScript, Tailwind CSS, and browser speech synthesis. Speech playback depends on the device's available voices. There is no backend or wallet integration in this early learning app.
+Browser speech synthesis reads card words and activity prompts. Pronunciation and voice availability depend on the device. Bible story content is off by default and currently includes one starter question per age range.
+
+## Contribute
+
+Start with [CONTRIBUTING.md](CONTRIBUTING.md) for the development workflow and [content guidelines](docs/CONTENT_GUIDELINES.md) before adding learning prompts. Keep questions clear, age appropriate, and verifiable.
+
+Built as part of [Geek Protocol](https://geekprotocol.xyz).

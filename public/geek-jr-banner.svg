@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-label="Geek Jr by Geek Protocol. Curiosity starts here.">
+  <defs>
+    <linearGradient id="g" x2="1" y2="1"><stop stop-color="#0c1518"/><stop offset="1" stop-color="#173c37"/></linearGradient>
+  </defs>
+  <rect width="1200" height="420" rx="24" fill="url(#g)"/>
+  <path d="M0 345h1200M0 220h1200M0 95h1200M220 0v420M460 0v420M700 0v420M940 0v420" stroke="#80e8c8" opacity=".06"/>
+  <text x="70" y="88" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" letter-spacing="5" fill="#68dfc3">GEEK PROTOCOL / EARLY LEARNING</text>
+  <text x="64" y="230" font-family="Arial,Helvetica,sans-serif" font-size="112" font-weight="900" letter-spacing="-8" fill="#f5faf7">GEEK <tspan fill="#68dfc3">JR.</tspan></text>
+  <text x="70" y="305" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#b4cbc3">Curiosity starts here.</text>
+  <text x="70" y="360" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" letter-spacing="4" fill="#80b6a6">LEARN · REMEMBER · GROW</text>
+  <circle cx="965" cy="210" r="158" fill="none" stroke="#68dfc3" opacity=".18" stroke-width="2"/>
+  <circle cx="965" cy="210" r="111" fill="none" stroke="#68dfc3" opacity=".4" stroke-width="2"/>
+  <path d="M965 78v36m-10-36h20" stroke="#68dfc3" stroke-width="5" stroke-linecap="round"/>
+  <rect x="870" y="123" width="190" height="175" rx="51" fill="#10302e" stroke="#68dfc3" stroke-width="6"/>
+  <rect x="894" y="177" width="142" height="77" rx="28" fill="#68dfc3"/>
+  <circle cx="936" cy="213" r="13" fill="#0c1518"/><circle cx="994" cy="213" r="13" fill="#0c1518"/>
+  <path d="M932 269q33 24 66 0" fill="none" stroke="#68dfc3" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="840" cy="205" r="11" fill="#68dfc3" opacity=".75"/><circle cx="1090" cy="205" r="11" fill="#68dfc3" opacity=".75"/>
+</svg>
