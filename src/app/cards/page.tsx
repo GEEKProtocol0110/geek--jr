@@ -1,12 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 import CardPlayer from "@/modules/cards/CardPlayer";
-import { loadSettings } from "@/lib/settings";
+import { DEFAULT_SETTINGS, loadSettings } from "@/lib/settings";
 
 export default function CardsPage() {
-  const settings = useMemo(() => loadSettings(), []);
+  const [settings, setSettings] = useState<typeof DEFAULT_SETTINGS | null>(null);
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => setSettings(loadSettings()));
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-8">
@@ -15,7 +19,7 @@ export default function CardsPage() {
           Back to hub
         </Link>
         <div className="mt-4">
-          <CardPlayer ageTier={settings.ageTier} sessionSize={settings.sessionSize} />
+          {settings ? <CardPlayer ageTier={settings.ageTier} sessionSize={settings.sessionSize} /> : <p>Loading cards...</p>}
         </div>
       </div>
     </main>
