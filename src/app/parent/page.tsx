@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { DEFAULT_SETTINGS, loadSettings, saveSettings } from "@/lib/settings";
 import { loadFromStorage } from "@/lib/storage";
+import { FIRST_WORDS_KEY, WordCardProgress } from "@/lib/firstWords";
 import { AgeTier, GameStatsByTier, GeekJrSettings, SessionSize, TimeLimitSec } from "@/lib/types";
 
 const AGE_TIERS: AgeTier[] = ["1-2", "3-4", "5-7", "8-10"];
@@ -37,11 +38,13 @@ export default function ParentPage() {
   const [settings, setSettings] = useState<GeekJrSettings>(DEFAULT_SETTINGS);
   const [stats, setStats] = useState<Record<string, ReturnType<typeof statsSummary>>>({});
   const [practicedCards, setPracticedCards] = useState(0);
+  const [practicedWords, setPracticedWords] = useState(0);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
       setSettings(loadSettings());
       setPracticedCards(Object.keys(loadFromStorage<Record<string, 1 | 2 | 3>>("geekjr_cards_leitner_v1", {})).length);
+      setPracticedWords(Object.values(loadFromStorage<Record<string, WordCardProgress>>(FIRST_WORDS_KEY, {})).filter((word) => word.seenCount > 0).length);
       setStats(Object.fromEntries(GAME_KEYS.map((game) => {
         const raw = loadFromStorage<GameStatsByTier>(game.key, {
           "1-2": EMPTY, "3-4": EMPTY, "5-7": EMPTY, "8-10": EMPTY,
@@ -129,6 +132,7 @@ export default function ParentPage() {
 
         <h2 className="mt-8 text-xl font-bold text-slate-900">Progress on this device</h2>
         <p className="mt-2 text-sm text-slate-600">Picture Cards: {practicedCards} unique cards practiced</p>
+        <p className="mt-1 text-sm text-slate-600">First Words: {practicedWords} unique words practiced</p>
         <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {GAME_KEYS.map((game) => {
             const summary = stats[game.id] ?? EMPTY;

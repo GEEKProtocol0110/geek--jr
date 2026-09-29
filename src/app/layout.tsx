@@ -3,11 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import "./globals.css";
 
-const assetBasePath = process.env.GITHUB_PAGES === "true" ? "/geek-jr" : "";
+const assetBasePath = process.env.GITHUB_PAGES === "true" && process.env.GEEK_JR_CUSTOM_DOMAIN !== "geekjr.xyz" ? "/geek-jr" : "";
 
 export const metadata: Metadata = {
   title: { default: "Geek Jr | Learn through play", template: "%s | Geek Jr" },
-  description: "Thoughtful early-learning activities for ages 1–10, from Geek Protocol.",
+  description: "Six thoughtful early-learning activities for ages 1–10, from Geek Protocol.",
   icons: { icon: `${assetBasePath}/favicon.svg` },
 };
 

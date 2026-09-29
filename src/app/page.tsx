@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const assetBasePath = process.env.GITHUB_PAGES === "true" ? "/geek-jr" : "";
+const assetBasePath = process.env.GITHUB_PAGES === "true" && process.env.GEEK_JR_CUSTOM_DOMAIN !== "geekjr.xyz" ? "/geek-jr" : "";
 
 
 const activities = [
@@ -10,6 +10,7 @@ const activities = [
   { number: "03", title: "Memory Match", description: "Flip and find the pairs.", href: "/memory", icon: "🧩", tint: "bg-emerald-100" },
   { number: "04", title: "Patterns & Logic", description: "What comes next?", href: "/patterns", icon: "✦", tint: "bg-violet-100" },
   { number: "05", title: "Story Sequence", description: "Choose how the story goes.", href: "/stories", icon: "📖", tint: "bg-rose-100" },
+  { number: "06", title: "First Words", description: "Say a word. Practice it together.", href: "/first-words", icon: "💬", tint: "bg-teal-100" },
 ];
 
 
@@ -21,7 +22,7 @@ export default function HomePage() {
           <div>
             <p className="eyebrow">GEEK PROTOCOL / EARLY LEARNING</p>
             <h1 id="hero-title">Curiosity<br />starts <em>here.</em></h1>
-            <p className="hero-description">Five little ways to think, remember, and grow. Made for curious kids ages 1–10.</p>
+            <p className="hero-description">Six little ways to think, remember, and grow. Made for curious kids ages 1–10.</p>
             <div className="hero-actions">
               <a className="hero-primary" href="#activities">Explore activities <span aria-hidden="true">↘</span></a>
               <Link className="hero-secondary" href="/parent">Parent setup <span aria-hidden="true">↗</span></Link>
@@ -45,7 +46,7 @@ export default function HomePage() {
           {activities.map((activity) => (
             <Link key={activity.href} href={activity.href} className="activity-tile">
               <div className="tile-top">
-                <span className="tile-number">{activity.number} / 05</span>
+                <span className="tile-number">{activity.number} / 06</span>
                 <span className={`tile-icon ${activity.tint}`} aria-hidden="true">{activity.icon}</span>
               </div>
               <div className="tile-bottom">
@@ -60,4 +61,3 @@ export default function HomePage() {
     </main>
   );
 }
-
