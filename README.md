@@ -2,8 +2,10 @@
 
 **[Play Geek Jr](https://geekprotocol0110.github.io/geek-jr/)** · [Deployment status](https://github.com/GEEKProtocol0110/geek-jr/actions/workflows/pages.yml)
 
+`geekjr.xyz` is the planned custom domain. The Pages build continues to use the `/geek-jr` path until DNS and the repository's Pages custom domain are configured. Once the domain resolves to GitHub Pages, set the repository Actions variable `GEEK_JR_CUSTOM_DOMAIN` to `geekjr.xyz` and redeploy; that builds root-relative routes and assets for the custom domain. See [GitHub's custom domain guide](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
 
-<p align="center"><strong>Curiosity starts here.</strong><br/>Five focused learning activities for children ages 1–10, from Geek Protocol.</p>
+
+<p align="center"><strong>Curiosity starts here.</strong><br/>Six focused learning activities for children ages 1–10, from Geek Protocol.</p>
 
 
 <p align="center">
@@ -26,6 +28,7 @@ Geek Jr turns short practice sessions into a simple daily learning habit. Parent
 | **Memory Match** | Flip cards to find picture pairs |
 | **Patterns & Logic** | Choose what comes next |
 | **Story Sequence** | Complete a short sequence; optional Bible story questions |
+| **First Words** | Practice 112 parent-guided word cards and browse the deck; reviews use five spaced practice boxes |
 
 
 Content is organized into four age ranges: **1–2**, **3–4**, **5–7**, and **8–10**. The youngest range has visual prompts and no timer. This is a starter library, not a complete curriculum; parental guidance is recommended, especially for children who are not reading yet.
@@ -71,6 +74,8 @@ Parent settings control age range, round length, time limit for older learners, 
 
 
 Browser speech synthesis reads card words and activity prompts. Pronunciation and voice availability depend on the device. Bible story content is off by default and currently includes one starter question per age range.
+
+The First Words deck was adapted from [geek-jr-indexcards](https://github.com/GEEKProtocol0110/geek-jr-indexcards). Its optional image paths were excluded because the referenced files are not in that repository; word cards use text, spoken words, and parent prompts. Progress is stored separately from Picture Cards.
 
 
 ## Contribute
