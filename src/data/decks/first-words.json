@@ -1,0 +1,786 @@
+[
+  {
+    "id": "family-mom",
+    "word": "MOM",
+    "category": "Family",
+    "prompt": "Where’s MOM?",
+    "soundHint": "Mmmom"
+  },
+  {
+    "id": "family-dad",
+    "word": "DAD",
+    "category": "Family",
+    "prompt": "Point to DAD.",
+    "soundHint": "D-d-dad"
+  },
+  {
+    "id": "family-baby",
+    "word": "BABY",
+    "category": "Family",
+    "prompt": "Where’s the BABY?",
+    "soundHint": "Bay-bee"
+  },
+  {
+    "id": "family-grandma",
+    "word": "GRANDMA",
+    "category": "Family",
+    "prompt": "Say GRANDMA.",
+    "soundHint": "Gran-ma"
+  },
+  {
+    "id": "family-grandpa",
+    "word": "GRANDPA",
+    "category": "Family",
+    "prompt": "Wave hi!",
+    "soundHint": "Gran-pa"
+  },
+  {
+    "id": "obj-cup",
+    "word": "CUP",
+    "category": "Objects",
+    "prompt": "Find the CUP.",
+    "soundHint": "C-c-cup"
+  },
+  {
+    "id": "obj-ball",
+    "word": "BALL",
+    "category": "Objects",
+    "prompt": "Roll the BALL.",
+    "soundHint": "B-b-ball"
+  },
+  {
+    "id": "obj-book",
+    "word": "BOOK",
+    "category": "Objects",
+    "prompt": "Get the BOOK.",
+    "soundHint": "Booook"
+  },
+  {
+    "id": "obj-car",
+    "word": "CAR",
+    "category": "Objects",
+    "prompt": "Vroom-vroom!",
+    "soundHint": "Caaaar"
+  },
+  {
+    "id": "obj-shoe",
+    "word": "SHOE",
+    "category": "Objects",
+    "prompt": "Where’s your SHOE?",
+    "soundHint": "Shooo"
+  },
+  {
+    "id": "obj-bed",
+    "word": "BED",
+    "category": "Objects",
+    "prompt": "Point to the BED.",
+    "soundHint": "Beee-d"
+  },
+  {
+    "id": "obj-dog",
+    "word": "DOG",
+    "category": "Objects",
+    "prompt": "Bark like a DOG.",
+    "soundHint": "D-d-dog"
+  },
+  {
+    "id": "obj-cat",
+    "word": "CAT",
+    "category": "Objects",
+    "prompt": "Meow like a CAT.",
+    "soundHint": "Caaat"
+  },
+  {
+    "id": "food-milk",
+    "word": "MILK",
+    "category": "Food",
+    "prompt": "Do you want MILK?",
+    "soundHint": "Miiilk"
+  },
+  {
+    "id": "food-banana",
+    "word": "BANANA",
+    "category": "Food",
+    "prompt": "Point to BANANA.",
+    "soundHint": "Ba-na-na"
+  },
+  {
+    "id": "food-apple",
+    "word": "APPLE",
+    "category": "Food",
+    "prompt": "Take a bite pretend.",
+    "soundHint": "Aaa-pple"
+  },
+  {
+    "id": "food-egg",
+    "word": "EGG",
+    "category": "Food",
+    "prompt": "Crack an EGG motion.",
+    "soundHint": "Ehhhhg"
+  },
+  {
+    "id": "food-bread",
+    "word": "BREAD",
+    "category": "Food",
+    "prompt": "Where’s BREAD?",
+    "soundHint": "Br-ead"
+  },
+  {
+    "id": "food-cheese",
+    "word": "CHEESE",
+    "category": "Food",
+    "prompt": "Smile: CHEESE!",
+    "soundHint": "Cheeeeese"
+  },
+  {
+    "id": "act-clap",
+    "word": "CLAP",
+    "category": "Actions",
+    "prompt": "Clap together.",
+    "soundHint": "Clap!"
+  },
+  {
+    "id": "act-wave",
+    "word": "WAVE",
+    "category": "Actions",
+    "prompt": "Wave hi!",
+    "soundHint": "Wa-ve"
+  },
+  {
+    "id": "act-hug",
+    "word": "HUG",
+    "category": "Actions",
+    "prompt": "Give a HUG.",
+    "soundHint": "Huuug"
+  },
+  {
+    "id": "act-jump",
+    "word": "JUMP",
+    "category": "Actions",
+    "prompt": "Tiny JUMP.",
+    "soundHint": "Ju-mp"
+  },
+  {
+    "id": "act-sit",
+    "word": "SIT",
+    "category": "Actions",
+    "prompt": "Sit down together.",
+    "soundHint": "Sssit"
+  },
+  {
+    "id": "act-dance",
+    "word": "DANCE",
+    "category": "Actions",
+    "prompt": "Dance 5 seconds.",
+    "soundHint": "Da-nce"
+  },
+  {
+    "id": "color-red",
+    "word": "RED",
+    "category": "Colors",
+    "prompt": "Find something RED.",
+    "soundHint": "Rrrred"
+  },
+  {
+    "id": "color-blue",
+    "word": "BLUE",
+    "category": "Colors",
+    "prompt": "Point to BLUE.",
+    "soundHint": "Bloo"
+  },
+  {
+    "id": "color-green",
+    "word": "GREEN",
+    "category": "Colors",
+    "prompt": "Find GREEN.",
+    "soundHint": "Greeeen"
+  },
+  {
+    "id": "color-yellow",
+    "word": "YELLOW",
+    "category": "Colors",
+    "prompt": "Show YELLOW.",
+    "soundHint": "Yel-low"
+  },
+  {
+    "id": "color-black",
+    "word": "BLACK",
+    "category": "Colors",
+    "prompt": "Find BLACK.",
+    "soundHint": "Blaaack"
+  },
+  {
+    "id": "number-1",
+    "word": "1",
+    "category": "Numbers",
+    "prompt": "Count to 1",
+    "soundHint": "One"
+  },
+  {
+    "id": "number-2",
+    "word": "2",
+    "category": "Numbers",
+    "prompt": "Count to 2",
+    "soundHint": "Two"
+  },
+  {
+    "id": "number-3",
+    "word": "3",
+    "category": "Numbers",
+    "prompt": "Count to 3",
+    "soundHint": "Three"
+  },
+  {
+    "id": "number-4",
+    "word": "4",
+    "category": "Numbers",
+    "prompt": "Count to 4",
+    "soundHint": "Four"
+  },
+  {
+    "id": "number-5",
+    "word": "5",
+    "category": "Numbers",
+    "prompt": "Count to 5",
+    "soundHint": "Five"
+  },
+  {
+    "id": "spelled-zero",
+    "word": "ZERO",
+    "category": "Spelled Numbers",
+    "prompt": "Spell ZERO",
+    "soundHint": "Zero"
+  },
+  {
+    "id": "spelled-one",
+    "word": "ONE",
+    "category": "Spelled Numbers",
+    "prompt": "Spell ONE",
+    "soundHint": "One"
+  },
+  {
+    "id": "spelled-two",
+    "word": "TWO",
+    "category": "Spelled Numbers",
+    "prompt": "Spell TWO",
+    "soundHint": "Two"
+  },
+  {
+    "id": "spelled-three",
+    "word": "THREE",
+    "category": "Spelled Numbers",
+    "prompt": "Spell THREE",
+    "soundHint": "Three"
+  },
+  {
+    "id": "spelled-four",
+    "word": "FOUR",
+    "category": "Spelled Numbers",
+    "prompt": "Spell FOUR",
+    "soundHint": "Four"
+  },
+  {
+    "id": "spelled-five",
+    "word": "FIVE",
+    "category": "Spelled Numbers",
+    "prompt": "Spell FIVE",
+    "soundHint": "Five"
+  },
+  {
+    "id": "body-head",
+    "word": "HEAD",
+    "category": "Body Parts",
+    "prompt": "Point to your HEAD",
+    "soundHint": "Head"
+  },
+  {
+    "id": "body-eyes",
+    "word": "EYES",
+    "category": "Body Parts",
+    "prompt": "Point to your EYES",
+    "soundHint": "Eyes"
+  },
+  {
+    "id": "body-nose",
+    "word": "NOSE",
+    "category": "Body Parts",
+    "prompt": "Point to your NOSE",
+    "soundHint": "Nose"
+  },
+  {
+    "id": "body-mouth",
+    "word": "MOUTH",
+    "category": "Body Parts",
+    "prompt": "Point to your MOUTH",
+    "soundHint": "Mouth"
+  },
+  {
+    "id": "body-ears",
+    "word": "EARS",
+    "category": "Body Parts",
+    "prompt": "Point to your EARS",
+    "soundHint": "Ears"
+  },
+  {
+    "id": "sight-the",
+    "word": "THE",
+    "category": "Sight Words",
+    "prompt": "Read THE",
+    "soundHint": "The"
+  },
+  {
+    "id": "sight-and",
+    "word": "AND",
+    "category": "Sight Words",
+    "prompt": "Read AND",
+    "soundHint": "And"
+  },
+  {
+    "id": "sight-you",
+    "word": "YOU",
+    "category": "Sight Words",
+    "prompt": "Read YOU",
+    "soundHint": "You"
+  },
+  {
+    "id": "sight-it",
+    "word": "IT",
+    "category": "Sight Words",
+    "prompt": "Read IT",
+    "soundHint": "It"
+  },
+  {
+    "id": "sight-in",
+    "word": "IN",
+    "category": "Sight Words",
+    "prompt": "Read IN",
+    "soundHint": "In"
+  },
+  {
+    "id": "sight-said",
+    "word": "SAID",
+    "category": "Sight Words",
+    "prompt": "Read SAID",
+    "soundHint": "Said"
+  },
+  {
+    "id": "sight-for",
+    "word": "FOR",
+    "category": "Sight Words",
+    "prompt": "Read FOR",
+    "soundHint": "For"
+  },
+  {
+    "id": "sight-up",
+    "word": "UP",
+    "category": "Sight Words",
+    "prompt": "Read UP",
+    "soundHint": "Up"
+  },
+  {
+    "id": "sight-look",
+    "word": "LOOK",
+    "category": "Sight Words",
+    "prompt": "Read LOOK",
+    "soundHint": "Look"
+  },
+  {
+    "id": "sight-is",
+    "word": "IS",
+    "category": "Sight Words",
+    "prompt": "Read IS",
+    "soundHint": "Is"
+  },
+  {
+    "id": "sight-go",
+    "word": "GO",
+    "category": "Sight Words",
+    "prompt": "Read GO",
+    "soundHint": "Go"
+  },
+  {
+    "id": "sight-we",
+    "word": "WE",
+    "category": "Sight Words",
+    "prompt": "Read WE",
+    "soundHint": "We"
+  },
+  {
+    "id": "sight-little",
+    "word": "LITTLE",
+    "category": "Sight Words",
+    "prompt": "Read LITTLE",
+    "soundHint": "Little"
+  },
+  {
+    "id": "sight-down",
+    "word": "DOWN",
+    "category": "Sight Words",
+    "prompt": "Read DOWN",
+    "soundHint": "Down"
+  },
+  {
+    "id": "sight-can",
+    "word": "CAN",
+    "category": "Sight Words",
+    "prompt": "Read CAN",
+    "soundHint": "Can"
+  },
+  {
+    "id": "sight-see",
+    "word": "SEE",
+    "category": "Sight Words",
+    "prompt": "Read SEE",
+    "soundHint": "See"
+  },
+  {
+    "id": "sight-not",
+    "word": "NOT",
+    "category": "Sight Words",
+    "prompt": "Read NOT",
+    "soundHint": "Not"
+  },
+  {
+    "id": "sight-one",
+    "word": "ONE",
+    "category": "Sight Words",
+    "prompt": "Read ONE",
+    "soundHint": "One"
+  },
+  {
+    "id": "sight-my",
+    "word": "MY",
+    "category": "Sight Words",
+    "prompt": "Read MY",
+    "soundHint": "My"
+  },
+  {
+    "id": "sight-me",
+    "word": "ME",
+    "category": "Sight Words",
+    "prompt": "Read ME",
+    "soundHint": "Me"
+  },
+  {
+    "id": "sight-big",
+    "word": "BIG",
+    "category": "Sight Words",
+    "prompt": "Read BIG",
+    "soundHint": "Big"
+  },
+  {
+    "id": "sight-come",
+    "word": "COME",
+    "category": "Sight Words",
+    "prompt": "Read COME",
+    "soundHint": "Come"
+  },
+  {
+    "id": "sight-blue",
+    "word": "BLUE",
+    "category": "Sight Words",
+    "prompt": "Read BLUE",
+    "soundHint": "Blue"
+  },
+  {
+    "id": "sight-red",
+    "word": "RED",
+    "category": "Sight Words",
+    "prompt": "Read RED",
+    "soundHint": "Red"
+  },
+  {
+    "id": "sight-where",
+    "word": "WHERE",
+    "category": "Sight Words",
+    "prompt": "Read WHERE",
+    "soundHint": "Where"
+  },
+  {
+    "id": "sight-jump",
+    "word": "JUMP",
+    "category": "Sight Words",
+    "prompt": "Read JUMP",
+    "soundHint": "Jump"
+  },
+  {
+    "id": "sight-away",
+    "word": "AWAY",
+    "category": "Sight Words",
+    "prompt": "Read AWAY",
+    "soundHint": "Away"
+  },
+  {
+    "id": "sight-here",
+    "word": "HERE",
+    "category": "Sight Words",
+    "prompt": "Read HERE",
+    "soundHint": "Here"
+  },
+  {
+    "id": "sight-help",
+    "word": "HELP",
+    "category": "Sight Words",
+    "prompt": "Read HELP",
+    "soundHint": "Help"
+  },
+  {
+    "id": "sight-make",
+    "word": "MAKE",
+    "category": "Sight Words",
+    "prompt": "Read MAKE",
+    "soundHint": "Make"
+  },
+  {
+    "id": "sight-yellow",
+    "word": "YELLOW",
+    "category": "Sight Words",
+    "prompt": "Read YELLOW",
+    "soundHint": "Yellow"
+  },
+  {
+    "id": "sight-two",
+    "word": "TWO",
+    "category": "Sight Words",
+    "prompt": "Read TWO",
+    "soundHint": "Two"
+  },
+  {
+    "id": "sight-play",
+    "word": "PLAY",
+    "category": "Sight Words",
+    "prompt": "Read PLAY",
+    "soundHint": "Play"
+  },
+  {
+    "id": "sight-run",
+    "word": "RUN",
+    "category": "Sight Words",
+    "prompt": "Read RUN",
+    "soundHint": "Run"
+  },
+  {
+    "id": "sight-find",
+    "word": "FIND",
+    "category": "Sight Words",
+    "prompt": "Read FIND",
+    "soundHint": "Find"
+  },
+  {
+    "id": "sight-three",
+    "word": "THREE",
+    "category": "Sight Words",
+    "prompt": "Read THREE",
+    "soundHint": "Three"
+  },
+  {
+    "id": "sight-funny",
+    "word": "FUNNY",
+    "category": "Sight Words",
+    "prompt": "Read FUNNY",
+    "soundHint": "Funny"
+  },
+  {
+    "id": "sight-what",
+    "word": "WHAT",
+    "category": "Sight Words",
+    "prompt": "Read WHAT",
+    "soundHint": "What"
+  },
+  {
+    "id": "sight-all",
+    "word": "ALL",
+    "category": "Sight Words",
+    "prompt": "Read ALL",
+    "soundHint": "All"
+  },
+  {
+    "id": "sight-are",
+    "word": "ARE",
+    "category": "Sight Words",
+    "prompt": "Read ARE",
+    "soundHint": "Are"
+  },
+  {
+    "id": "sight-your",
+    "word": "YOUR",
+    "category": "Sight Words",
+    "prompt": "Read YOUR",
+    "soundHint": "Your"
+  },
+  {
+    "id": "sight-with",
+    "word": "WITH",
+    "category": "Sight Words",
+    "prompt": "Read WITH",
+    "soundHint": "With"
+  },
+  {
+    "id": "sight-they",
+    "word": "THEY",
+    "category": "Sight Words",
+    "prompt": "Read THEY",
+    "soundHint": "They"
+  },
+  {
+    "id": "sight-was",
+    "word": "WAS",
+    "category": "Sight Words",
+    "prompt": "Read WAS",
+    "soundHint": "Was"
+  },
+  {
+    "id": "sight-be",
+    "word": "BE",
+    "category": "Sight Words",
+    "prompt": "Read BE",
+    "soundHint": "Be"
+  },
+  {
+    "id": "sight-have",
+    "word": "HAVE",
+    "category": "Sight Words",
+    "prompt": "Read HAVE",
+    "soundHint": "Have"
+  },
+  {
+    "id": "sight-like",
+    "word": "LIKE",
+    "category": "Sight Words",
+    "prompt": "Read LIKE",
+    "soundHint": "Like"
+  },
+  {
+    "id": "sight-this",
+    "word": "THIS",
+    "category": "Sight Words",
+    "prompt": "Read THIS",
+    "soundHint": "This"
+  },
+  {
+    "id": "sight-will",
+    "word": "WILL",
+    "category": "Sight Words",
+    "prompt": "Read WILL",
+    "soundHint": "Will"
+  },
+  {
+    "id": "sight-yes",
+    "word": "YES",
+    "category": "Sight Words",
+    "prompt": "Read YES",
+    "soundHint": "Yes"
+  },
+  {
+    "id": "sight-no",
+    "word": "NO",
+    "category": "Sight Words",
+    "prompt": "Read NO",
+    "soundHint": "No"
+  },
+  {
+    "id": "sight-so",
+    "word": "SO",
+    "category": "Sight Words",
+    "prompt": "Read SO",
+    "soundHint": "So"
+  },
+  {
+    "id": "sight-if",
+    "word": "IF",
+    "category": "Sight Words",
+    "prompt": "Read IF",
+    "soundHint": "If"
+  },
+  {
+    "id": "sight-do",
+    "word": "DO",
+    "category": "Sight Words",
+    "prompt": "Read DO",
+    "soundHint": "Do"
+  },
+  {
+    "id": "sight-has",
+    "word": "HAS",
+    "category": "Sight Words",
+    "prompt": "Read HAS",
+    "soundHint": "Has"
+  },
+  {
+    "id": "sight-had",
+    "word": "HAD",
+    "category": "Sight Words",
+    "prompt": "Read HAD",
+    "soundHint": "Had"
+  },
+  {
+    "id": "sight-but",
+    "word": "BUT",
+    "category": "Sight Words",
+    "prompt": "Read BUT",
+    "soundHint": "But"
+  },
+  {
+    "id": "sight-to",
+    "word": "TO",
+    "category": "Sight Words",
+    "prompt": "Read TO",
+    "soundHint": "To"
+  },
+  {
+    "id": "sight-into",
+    "word": "INTO",
+    "category": "Sight Words",
+    "prompt": "Read INTO",
+    "soundHint": "Into"
+  },
+  {
+    "id": "sight-that",
+    "word": "THAT",
+    "category": "Sight Words",
+    "prompt": "Read THAT",
+    "soundHint": "That"
+  },
+  {
+    "id": "sight-of",
+    "word": "OF",
+    "category": "Sight Words",
+    "prompt": "Read OF",
+    "soundHint": "Of"
+  },
+  {
+    "id": "sight-from",
+    "word": "FROM",
+    "category": "Sight Words",
+    "prompt": "Read FROM",
+    "soundHint": "From"
+  },
+  {
+    "id": "sight-then",
+    "word": "THEN",
+    "category": "Sight Words",
+    "prompt": "Read THEN",
+    "soundHint": "Then"
+  },
+  {
+    "id": "sight-i",
+    "word": "I",
+    "category": "Sight Words",
+    "prompt": "Read I",
+    "soundHint": "I"
+  },
+  {
+    "id": "sight-am",
+    "word": "AM",
+    "category": "Sight Words",
+    "prompt": "Read AM",
+    "soundHint": "Am"
+  },
+  {
+    "id": "sight-at",
+    "word": "AT",
+    "category": "Sight Words",
+    "prompt": "Read AT",
+    "soundHint": "At"
+  }
+]
