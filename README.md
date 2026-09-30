@@ -1,8 +1,8 @@
 ![Geek Jr — Curiosity starts here](public/geek-jr-banner.svg)
 
-**[Play Geek Jr](https://geekprotocol0110.github.io/geek-jr/)** · [Deployment status](https://github.com/GEEKProtocol0110/geek-jr/actions/workflows/pages.yml)
+**[Play Geek Jr](https://geekjr.xyz/)** · [Deployment status](https://github.com/GEEKProtocol0110/geek-jr/actions/workflows/pages.yml)
 
-`geekjr.xyz` is the planned custom domain. The Pages build continues to use the `/geek-jr` path until DNS and the repository's Pages custom domain are configured. Once the domain resolves to GitHub Pages, set the repository Actions variable `GEEK_JR_CUSTOM_DOMAIN` to `geekjr.xyz` and redeploy; that builds root-relative routes and assets for the custom domain. See [GitHub's custom domain guide](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
+The site is deployed with GitHub Pages at `geekjr.xyz`. The workflow uses the repository Actions variable `GEEK_JR_CUSTOM_DOMAIN=geekjr.xyz` to build root-relative routes and assets for the custom domain. See [GitHub's custom domain guide](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
 
 
 <p align="center"><strong>Curiosity starts here.</strong><br/>Six focused learning activities for children ages 1–10, from Geek Protocol.</p>
