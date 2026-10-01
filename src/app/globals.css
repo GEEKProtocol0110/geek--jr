@@ -52,6 +52,27 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
 .art-tag.top { top: 22px; left: 22px; }
 .art-tag.bottom { bottom: 22px; right: 22px; }
 
+.guided-section { background: #e0eee8; scroll-margin-top: 24px; border-bottom: 1px solid #c5ded3; }
+.guided-inner { max-width: 1220px; margin: auto; padding: 66px 28px; display: grid; grid-template-columns: minmax(250px, .75fr) minmax(0, 1.25fr); gap: clamp(36px, 7vw, 110px); align-items: center; }
+.guided-intro .eyebrow { color: #287f6a; }
+.guided-intro h2 { margin: 12px 0 16px; max-width: 360px; font-size: clamp(35px, 4vw, 50px); line-height: 1.04; letter-spacing: -.055em; }
+.guided-intro p:not(.eyebrow) { max-width: 360px; color: #48635c; font-size: 16px; line-height: 1.6; }
+.guided-intro a { display: inline-flex; gap: 16px; margin-top: 12px; color: #126a55; text-decoration-thickness: 1px; text-underline-offset: 4px; font-size: 13px; font-weight: 800; }
+.age-picker { display: flex; gap: 18px; align-items: center; justify-content: space-between; margin-bottom: 17px; }
+.age-picker > span { font-size: 10px; color: #386958; font-weight: 900; letter-spacing: .18em; }
+.age-picker > div { display: flex; flex-wrap: wrap; gap: 6px; }
+.age-picker button { min-width: 54px; min-height: 40px; padding: 7px 10px; border: 1px solid #bdd4c8; border-radius: 8px; background: #f1f8f2; color: #1b4a3e; font-size: 12px; font-weight: 800; cursor: pointer; }
+.age-picker button[aria-pressed="true"] { background: #0e5546; border-color: #0e5546; color: #fff; }
+.age-picker button:hover { border-color: #0e5546; }
+.guided-steps { display: grid; gap: 8px; }
+.guided-step { display: flex; gap: 18px; align-items: center; min-height: 84px; padding: 16px 21px; border-radius: 12px; border: 1px solid #cbdfd4; background: #fff; color: #152c27; text-decoration: none; transition: transform 180ms ease, border-color 180ms ease; }
+.guided-step:hover { transform: translateX(4px); border-color: #55ae91; }
+.step-number { font-size: 13px; font-weight: 900; color: #2c9c79; letter-spacing: .08em; }
+.step-copy { display: grid; gap: 4px; }
+.step-copy strong { font-size: 17px; letter-spacing: -.03em; }
+.step-copy small { color: #658078; font-size: 12px; }
+.step-arrow { margin-left: auto; color: #188e70; font-size: 21px; }
+
 .activities-section { max-width: 1220px; margin: 0 auto; padding: 76px 28px 92px; scroll-margin-top: 40px; }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 25px; }
 .section-heading p { color: #44846f; font-size: 11px; font-weight: 900; letter-spacing: .18em; }
@@ -65,6 +86,7 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
 .tile-number { color: #719184; font-size: 11px; letter-spacing: .14em; font-weight: 800; }
 .tile-icon { width: 57px; height: 57px; display: grid; place-items: center; border-radius: 15px; font-size: 27px; background: var(--tile-tint); }
 .tile-bottom { display: flex; align-items: end; justify-content: space-between; gap: 10px; }
+.tile-focus { display: block; margin-bottom: 10px; color: #438774; font-size: 10px; font-weight: 900; letter-spacing: .17em; }
 .tile-bottom h3 { font-size: 24px; letter-spacing: -.04em; line-height: 1.05; margin: 0; }
 .tile-bottom p { color: #5f6e6b; margin: 10px 0 0; font-size: 14px; }
 .tile-arrow { font-size: 23px; color: #279b81; }
@@ -90,6 +112,7 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; gap: 46px; }
   .hero-art { max-width: 440px; }
+  .guided-inner { grid-template-columns: 1fr; gap: 30px; }
 }
 @media (max-width: 680px) {
   .site-header-inner { min-height: 68px; padding: 10px 18px; }
@@ -100,6 +123,9 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
   .nav-parent span { display: none; }
   .hero-grid { padding: 58px 20px 62px; }
   .hero-art { max-width: 340px; }
+  .guided-inner { padding: 48px 20px 55px; }
+  .age-picker { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .guided-step { min-height: 76px; }
   .activities-section { padding: 56px 20px 65px; }
   .section-heading { display: block; }
   .section-heading small { display: block; margin-top: 10px; }
@@ -114,5 +140,5 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .activity-tile { transition: none; }
+  .activity-tile, .guided-step { transition: none; }
 }

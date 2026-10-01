@@ -1,16 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
+import GuidedPath from "@/modules/home/GuidedPath";
 
 const assetBasePath = process.env.GITHUB_PAGES === "true" && process.env.GEEK_JR_CUSTOM_DOMAIN !== "geekjr.xyz" ? "/geek-jr" : "";
 
 
 const activities = [
-  { number: "01", title: "Picture Cards", description: "See it. Say it. Remember it.", href: "/cards", icon: "🖼️", tint: "bg-amber-100" },
-  { number: "02", title: "Phonics Tap", description: "Listen and find the sound.", href: "/phonics", icon: "🔤", tint: "bg-sky-100" },
-  { number: "03", title: "Memory Match", description: "Flip and find the pairs.", href: "/memory", icon: "🧩", tint: "bg-emerald-100" },
-  { number: "04", title: "Patterns & Logic", description: "What comes next?", href: "/patterns", icon: "✦", tint: "bg-violet-100" },
-  { number: "05", title: "Story Sequence", description: "Choose how the story goes.", href: "/stories", icon: "📖", tint: "bg-rose-100" },
-  { number: "06", title: "First Words", description: "Say a word. Practice it together.", href: "/first-words", icon: "💬", tint: "bg-teal-100" },
+  { number: "01", title: "Picture Cards", focus: "VOCABULARY", description: "See it. Say it. Remember it.", href: "/cards", icon: "🖼️", tint: "bg-amber-100" },
+  { number: "02", title: "Phonics Tap", focus: "SOUNDS", description: "Listen and find the sound.", href: "/phonics", icon: "🔤", tint: "bg-sky-100" },
+  { number: "03", title: "Memory Match", focus: "RECALL", description: "Flip and find the pairs.", href: "/memory", icon: "🧩", tint: "bg-emerald-100" },
+  { number: "04", title: "Patterns & Logic", focus: "REASONING", description: "What comes next?", href: "/patterns", icon: "✦", tint: "bg-violet-100" },
+  { number: "05", title: "Story Sequence", focus: "SEQUENCING", description: "Choose how the story goes.", href: "/stories", icon: "📖", tint: "bg-rose-100" },
+  { number: "06", title: "First Words", focus: "EARLY READING", description: "Say a word. Practice it together.", href: "/first-words", icon: "💬", tint: "bg-teal-100" },
 ];
 
 
@@ -22,9 +23,9 @@ export default function HomePage() {
           <div>
             <p className="eyebrow">GEEK PROTOCOL / EARLY LEARNING</p>
             <h1 id="hero-title">Curiosity<br />starts <em>here.</em></h1>
-            <p className="hero-description">Six little ways to think, remember, and grow. Made for curious kids ages 1–10.</p>
+            <p className="hero-description">Six playful activities. Four age levels. One small step at a time.</p>
             <div className="hero-actions">
-              <a className="hero-primary" href="#activities">Explore activities <span aria-hidden="true">↘</span></a>
+              <a className="hero-primary" href="#start">Find your first step <span aria-hidden="true">↘</span></a>
               <Link className="hero-secondary" href="/parent">Parent setup <span aria-hidden="true">↗</span></Link>
             </div>
           </div>
@@ -36,6 +37,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      <GuidedPath />
 
       <section className="activities-section" id="activities" aria-labelledby="activities-title">
         <div className="section-heading">
@@ -50,7 +52,7 @@ export default function HomePage() {
                 <span className={`tile-icon ${activity.tint}`} aria-hidden="true">{activity.icon}</span>
               </div>
               <div className="tile-bottom">
-                <div><h3>{activity.title}</h3><p>{activity.description}</p></div>
+                <div><span className="tile-focus">{activity.focus}</span><h3>{activity.title}</h3><p>{activity.description}</p></div>
                 <span className="tile-arrow" aria-hidden="true">↗</span>
               </div>
             </Link>
