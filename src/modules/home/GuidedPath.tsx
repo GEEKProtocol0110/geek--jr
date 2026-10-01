@@ -4,14 +4,17 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { DEFAULT_SETTINGS, loadSettings, saveSettings } from "@/lib/settings";
 import { AgeTier, GeekJrSettings } from "@/lib/types";
+import { FIRST_WORDS_KEY, WordCardProgress } from "@/lib/firstWords";
+import { loadFromStorage } from "@/lib/storage";
+import { WORD_LESSONS } from "@/lib/wordLessons";
 
 const ages: AgeTier[] = ["1-2", "3-4", "5-7", "8-10"];
 
 const paths: Record<AgeTier, { href: string; title: string; focus: string }[]> = {
   "1-2": [
+    { href: "/first-words", title: "First Words", focus: "Look, say, and play together" },
     { href: "/cards", title: "Picture Cards", focus: "Name what you see" },
-    { href: "/first-words", title: "First Words", focus: "Say it together" },
-    { href: "/memory", title: "Memory Match", focus: "Find a pair" },
+    { href: "/memory", title: "Picture matching", focus: "Match two visible pictures" },
   ],
   "3-4": [
     { href: "/first-words", title: "First Words", focus: "Build vocabulary" },
@@ -32,9 +35,13 @@ const paths: Record<AgeTier, { href: string; title: string; focus: string }[]> =
 
 export default function GuidedPath() {
   const [settings, setSettings] = useState<GeekJrSettings>(DEFAULT_SETTINGS);
+  const [wordProgress, setWordProgress] = useState<Record<string, WordCardProgress>>({});
 
   useEffect(() => {
-    const frame = window.requestAnimationFrame(() => setSettings(loadSettings()));
+    const frame = window.requestAnimationFrame(() => {
+      setSettings(loadSettings());
+      setWordProgress(loadFromStorage<Record<string, WordCardProgress>>(FIRST_WORDS_KEY, {}));
+    });
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
@@ -43,6 +50,8 @@ export default function GuidedPath() {
     setSettings(next);
     saveSettings(next);
   }
+
+  const suggestedLesson = WORD_LESSONS.find((lesson) => lesson.words.some((id) => wordProgress[id]?.observations?.understands?.level !== "independent")) ?? [...WORD_LESSONS].sort((a, b) => Math.min(...a.words.map((id) => wordProgress[id]?.lastSeen ?? 0)) - Math.min(...b.words.map((id) => wordProgress[id]?.lastSeen ?? 0)))[0];
 
   return (
     <section className="guided-section" id="start" aria-labelledby="guided-title">
@@ -64,6 +73,12 @@ export default function GuidedPath() {
               ))}
             </div>
           </div>
+          {(settings.ageTier === "1-2" || settings.ageTier === "3-4") && <div className="mt-4 rounded-xl border border-teal-300 bg-white p-4">
+            <p className="text-xs font-bold uppercase tracking-widest text-teal-700">A lesson to try together</p>
+            <Link href={`/first-words?lesson=${suggestedLesson.id}`} className="mt-2 block text-xl font-bold text-teal-950">{suggestedLesson.title} <span aria-hidden="true">↗</span></Link>
+            <p className="mt-1 text-sm text-slate-600">{suggestedLesson.description} Suggested from your parent observations; follow your child’s interest.</p>
+            <Link href="/first-words/deck" className="mt-3 inline-block text-sm font-semibold text-teal-800 underline">Choose a different lesson</Link>
+          </div>}
           <div className="guided-steps">
             {paths[settings.ageTier].map((step, index) => (
               <Link key={step.href} href={step.href} className="guided-step">

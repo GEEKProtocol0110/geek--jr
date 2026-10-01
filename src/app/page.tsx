@@ -8,10 +8,10 @@ const assetBasePath = process.env.GITHUB_PAGES === "true" && process.env.GEEK_JR
 const activities = [
   { number: "01", title: "Picture Cards", focus: "VOCABULARY", description: "See it. Say it. Remember it.", href: "/cards", icon: "🖼️", tint: "bg-amber-100" },
   { number: "02", title: "Phonics Tap", focus: "SOUNDS", description: "Listen and find the sound.", href: "/phonics", icon: "🔤", tint: "bg-sky-100" },
-  { number: "03", title: "Memory Match", focus: "RECALL", description: "Flip and find the pairs.", href: "/memory", icon: "🧩", tint: "bg-emerald-100" },
+  { number: "03", title: "Memory Match", focus: "MATCHING & RECALL", description: "Match pictures. Build recall when ready.", href: "/memory", icon: "🧩", tint: "bg-emerald-100" },
   { number: "04", title: "Patterns & Logic", focus: "REASONING", description: "What comes next?", href: "/patterns", icon: "✦", tint: "bg-violet-100" },
   { number: "05", title: "Story Sequence", focus: "SEQUENCING", description: "Choose how the story goes.", href: "/stories", icon: "📖", tint: "bg-rose-100" },
-  { number: "06", title: "First Words", focus: "EARLY READING", description: "Say a word. Practice it together.", href: "/first-words", icon: "💬", tint: "bg-teal-100" },
+  { number: "06", title: "First Words", focus: "LANGUAGE & PRINT", description: "Picture, word, and real-world play.", href: "/first-words", icon: "💬", tint: "bg-teal-100" },
 ];
 
 
@@ -23,7 +23,7 @@ export default function HomePage() {
           <div>
             <p className="eyebrow">GEEK PROTOCOL / EARLY LEARNING</p>
             <h1 id="hero-title">Curiosity<br />starts <em>here.</em></h1>
-            <p className="hero-description">Six playful activities. Four age levels. One small step at a time.</p>
+            <p className="hero-description">From first words to curious minds. Six playful activities to explore together, one small step at a time.</p>
             <div className="hero-actions">
               <a className="hero-primary" href="#start">Find your first step <span aria-hidden="true">↘</span></a>
               <Link className="hero-secondary" href="/parent">Parent setup <span aria-hidden="true">↗</span></Link>

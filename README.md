@@ -25,7 +25,7 @@ Geek Jr turns short practice sessions into a simple learning habit. Families can
 | --- | --- |
 | **Picture Cards** | See a picture or prompt, hear a word, and mark it “Got it” or “Need practice” |
 | **Phonics Tap** | Hear a prompt or choice, then pick the matching sound |
-| **Memory Match** | Flip cards to find picture pairs |
+| **Memory Match** | Match visible picture pairs for toddlers; flip cards for older learners |
 | **Patterns & Logic** | Choose what comes next |
 | **Story Sequence** | Complete a short sequence; optional Bible story questions |
 | **First Words** | Practice 112 parent-guided word cards and browse the deck; reviews use five spaced practice boxes |
@@ -78,10 +78,20 @@ Parent settings control age range, round length, time limit for older learners, 
 
 Browser speech synthesis reads card words and activity prompts. Pronunciation and voice availability depend on the device. Bible story content is off by default and currently includes one starter question per age range.
 
-The First Words deck was adapted from [geek-jr-indexcards](https://github.com/GEEKProtocol0110/geek-jr-indexcards). Its optional image paths were excluded because the referenced files are not in that repository; word cards use text, spoken words, and parent prompts. Progress is stored separately from Picture Cards.
+The First Words deck was adapted from [geek-jr-indexcards](https://github.com/GEEKProtocol0110/geek-jr-indexcards). Its optional image paths were excluded because the referenced files are not in that repository; the original text and prompts are preserved, with 20 original illustrations now added to the concrete starter lessons. Progress is stored separately from Picture Cards.
 
 
 ## Contribute
 
 
 Start with [CONTRIBUTING.md](CONTRIBUTING.md) for the development workflow and [content guidelines](docs/CONTENT_GUIDELINES.md) before adding learning prompts. Keep questions clear, age appropriate, and verifiable.
+
+## Parent-guided First Words
+
+Six small themed lessons connect 20 illustrated concrete words to naming, gestures, early speech, and real-world play. The original 112-card word deck remains available, with links to start a category or an individual word. Ages 1–2 default to the concrete words and up to three cards. Parents may choose another category to match their child's readiness.
+
+Parent observations distinguish understanding, saying/attempting a word, and optional print recognition. They are stored locally; old practice marks do not become skill claims. Print focus hides pictures, and spoken hints prevent an independent mark for that attempt. Familiar word recognition is not the same as decoding new words.
+
+Reviews show due words before new ones without filling rounds with future reviews. An explicit extra-practice action allows early repetition. All ages can choose no timer; ages 1–2 always use no timer and visible-picture matching. Multiple-choice answers are shuffled within each question, with first-try results shown separately.
+
+`npm run check:content` covers the activity datasets plus answer shuffling, review intervals, observation independence, legacy-progress preservation, and lesson illustration coverage. The parent dashboard shows the latest observations and a recent-word table. No account or microphone is needed.

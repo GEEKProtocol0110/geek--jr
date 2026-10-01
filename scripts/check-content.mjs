@@ -35,3 +35,5 @@ for (const [name, file, kind] of sources) {
 
   console.log(`${name}: four age levels with full 10-item rounds`);
 }
+
+await import('./check-learning.mjs');

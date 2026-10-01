@@ -4,12 +4,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { DEFAULT_SETTINGS, loadSettings, saveSettings } from "@/lib/settings";
 import { loadFromStorage } from "@/lib/storage";
-import { FIRST_WORDS_KEY, WordCardProgress } from "@/lib/firstWords";
+import { FIRST_WORDS_KEY, OBSERVATION_LEVELS, WORD_SKILLS, WordCardProgress } from "@/lib/firstWords";
+import words from "@/data/decks/first-words.json";
 import { AgeTier, GameStatsByTier, GeekJrSettings, SessionSize, TimeLimitSec } from "@/lib/types";
 
 const AGE_TIERS: AgeTier[] = ["1-2", "3-4", "5-7", "8-10"];
 const SESSION_SIZES: SessionSize[] = [3, 5, 10];
-const TIME_LIMITS: TimeLimitSec[] = [60, 120, 180];
+const TIME_LIMITS: TimeLimitSec[] = [0, 60, 120, 180];
 
 const GAME_KEYS = [
   { id: "phonics", label: "Phonics Tap", key: "geekjr_stats_phonics_v1" },
@@ -39,12 +40,15 @@ export default function ParentPage() {
   const [stats, setStats] = useState<Record<string, ReturnType<typeof statsSummary>>>({});
   const [practicedCards, setPracticedCards] = useState(0);
   const [practicedWords, setPracticedWords] = useState(0);
+  const [wordProgress, setWordProgress] = useState<Record<string, WordCardProgress>>({});
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
       setSettings(loadSettings());
       setPracticedCards(Object.keys(loadFromStorage<Record<string, 1 | 2 | 3>>("geekjr_cards_leitner_v1", {})).length);
-      setPracticedWords(Object.values(loadFromStorage<Record<string, WordCardProgress>>(FIRST_WORDS_KEY, {})).filter((word) => word.seenCount > 0).length);
+      const savedWords = loadFromStorage<Record<string, WordCardProgress>>(FIRST_WORDS_KEY, {});
+      setWordProgress(savedWords);
+      setPracticedWords(Object.values(savedWords).filter((word) => word.seenCount > 0).length);
       setStats(Object.fromEntries(GAME_KEYS.map((game) => {
         const raw = loadFromStorage<GameStatsByTier>(game.key, {
           "1-2": EMPTY, "3-4": EMPTY, "5-7": EMPTY, "8-10": EMPTY,
@@ -97,7 +101,7 @@ export default function ParentPage() {
             >
               {TIME_LIMITS.map((sec) => (
                 <option key={sec} value={sec}>
-                  {sec}
+                  {sec === 0 ? "No timer" : sec}
                 </option>
               ))}
             </select>
@@ -133,6 +137,36 @@ export default function ParentPage() {
         <h2 className="mt-8 text-xl font-bold text-slate-900">Progress on this device</h2>
         <p className="mt-2 text-sm text-slate-600">Picture Cards: {practicedCards} unique cards practiced</p>
         <p className="mt-1 text-sm text-slate-600">First Words: {practicedWords} unique words practiced</p>
+        <div className="mt-5 rounded-xl border border-teal-200 bg-teal-50 p-4">
+          <h3 className="text-lg font-bold text-teal-950">What you have observed</h3>
+          <p className="mt-2 text-sm text-teal-900">Understanding, talking, and recognizing print are separate skills. Old ‘Got it’ marks stay in your practice history; they do not count as observations here.</p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            {WORD_SKILLS.map((skill) => {
+              const observed = Object.values(wordProgress).flatMap((word) => word.observations?.[skill.id] ? [word.observations[skill.id]!] : []);
+              return <div key={skill.id} className="rounded-lg bg-white p-3">
+                <p className="text-sm font-bold text-slate-900">{skill.label}</p>
+                <p className="mt-1 text-xl font-black text-teal-900">{observed.filter((item) => item.level === "independent").length} <span className="text-xs font-normal">on their own</span></p>
+                <p className="mt-1 text-xs text-slate-600">{observed.filter((item) => item.level === "with-help").length} with help · {observed.filter((item) => item.level === "not-yet").length} not yet</p>
+              </div>;
+            })}
+          </div>
+          {Object.values(wordProgress).some((word) => word.observations && Object.keys(word.observations).length > 0) ? (
+            <div className="mt-4 overflow-x-auto">
+              <table className="w-full text-left text-sm">
+                <caption className="mb-2 text-left font-bold text-teal-950">Most recent word observations</caption>
+                <thead><tr><th className="p-2">Word</th>{WORD_SKILLS.map((skill) => <th key={skill.id} className="p-2">{skill.id === "understands" ? "Understands" : skill.id === "speaks" ? "Says / attempts" : "Print"}</th>)}</tr></thead>
+                <tbody>{words.filter((word) => wordProgress[word.id]?.observations && Object.keys(wordProgress[word.id].observations!).length > 0).sort((a, b) => wordProgress[b.id].lastSeen - wordProgress[a.id].lastSeen).slice(0, 10).map((word) => (
+                  <tr key={word.id} className="border-t border-teal-200"><th scope="row" className="p-2"><Link href={`/first-words?word=${encodeURIComponent(word.id)}`} className="font-bold underline">{word.word}</Link></th>{WORD_SKILLS.map((skill) => {
+                    const observation = wordProgress[word.id].observations?.[skill.id];
+                    return <td key={skill.id} className="whitespace-nowrap p-2">{observation ? <>{OBSERVATION_LEVELS.find((level) => level.id === observation.level)?.label}<span className="block text-xs text-slate-500">{new Date(observation.lastObserved).toLocaleDateString()}</span></> : "Not observed"}</td>;
+                  })}</tr>
+                ))}</tbody>
+              </table>
+            </div>
+          ) : <p className="mt-4 text-sm text-teal-900">Start a First Words lesson and record only the skills you observe.</p>}
+          <Link href="/first-words" className="mt-4 inline-block min-h-12 rounded-lg bg-teal-800 px-4 py-3 font-bold text-white">Practice First Words</Link>
+          <p className="mt-3 text-xs text-teal-900">These observations describe familiar words. Print recognition does not demonstrate decoding unfamiliar words. All progress stays in this browser; clearing site data removes it.</p>
+        </div>
         <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {GAME_KEYS.map((game) => {
             const summary = stats[game.id] ?? EMPTY;

@@ -1,7 +1,7 @@
 export type AgeTier = "1-2" | "3-4" | "5-7" | "8-10";
 
 export type SessionSize = 3 | 5 | 10;
-export type TimeLimitSec = 60 | 120 | 180;
+export type TimeLimitSec = 0 | 60 | 120 | 180;
 
 export interface GeekJrSettings {
   sessionSize: SessionSize;

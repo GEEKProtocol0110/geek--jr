@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { DEFAULT_SETTINGS, loadSettings } from "@/lib/settings";
 import { loadFromStorage, saveToStorage } from "@/lib/storage";
 import { AgeTier, GameStats, GameStatsByTier } from "@/lib/types";
+import { prepareChoiceRound } from "@/lib/practice";
 
 export interface ChoicePrompt {
   id: string;
@@ -33,15 +34,6 @@ const EMPTY_BY_TIER: GameStatsByTier = {
   "8-10": { ...EMPTY_STATS },
 };
 
-function shuffle<T>(items: T[]): T[] {
-  const arr = [...items];
-  for (let i = arr.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
-
 export default function TimedChoicesGame({ title, storageKey, prompts }: TimedChoicesGameProps) {
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
   const [sessionPrompts, setSessionPrompts] = useState<ChoicePrompt[]>([]);
@@ -59,12 +51,14 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
   const [roundAttempts, setRoundAttempts] = useState(0);
   const [roundCorrect, setRoundCorrect] = useState(0);
   const [roundBestStreak, setRoundBestStreak] = useState(0);
+  const [firstTryCorrect, setFirstTryCorrect] = useState(0);
+  const firstTryRef = useRef(0);
 
   useEffect(() => {
     const loadedSettings = loadSettings();
     const pool = prompts.filter((p) =>
       p.tier === loadedSettings.ageTier && (p.pack !== "christian" || loadedSettings.christianPacks));
-    const preparedPrompts = shuffle(pool).slice(0, Math.min(loadedSettings.sessionSize, pool.length));
+    const preparedPrompts = prepareChoiceRound(pool, loadedSettings.sessionSize);
 
     setSettings(loadedSettings);
     setSessionPrompts(preparedPrompts);
@@ -81,7 +75,7 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
   }, []);
 
   useEffect(() => {
-    if (!hydrated || ended || settings.ageTier === "1-2") {
+    if (!hydrated || ended || settings.ageTier === "1-2" || settings.timeLimitSec === 0) {
       return;
     }
 
@@ -97,7 +91,7 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
     }, 1000);
 
     return () => window.clearInterval(timer);
-  }, [ended, hydrated, settings.ageTier]);
+  }, [ended, hydrated, settings.ageTier, settings.timeLimitSec]);
 
   const current = sessionPrompts[index];
 
@@ -130,10 +124,15 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
       return;
     }
 
+    const isFirstTry = triedRef.current.size === 0;
     triedRef.current.add(choice);
     setTriedChoices([...triedRef.current]);
 
     const wasCorrect = choice === current.correct;
+    if (isFirstTry && wasCorrect) {
+      firstTryRef.current += 1;
+      setFirstTryCorrect(firstTryRef.current);
+    }
     const nextStreak = wasCorrect ? streak + 1 : 0;
 
     setStreak(nextStreak);
@@ -184,7 +183,7 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
       <p className="mt-1 text-sm text-slate-600">Age tier: {settings.ageTier}</p>
 
       <div className="mt-4 grid grid-cols-3 gap-3 text-center text-sm">
-        <div className="rounded-lg bg-slate-100 p-2">{settings.ageTier === "1-2" ? "No timer" : `Timer: ${secondsLeft}s`}</div>
+        <div className="rounded-lg bg-slate-100 p-2">{settings.ageTier === "1-2" || settings.timeLimitSec === 0 ? "No timer" : `Timer: ${secondsLeft}s`}</div>
         <div className="rounded-lg bg-slate-100 p-2">Progress: {Math.min(index + 1, sessionPrompts.length)}/{sessionPrompts.length}</div>
         <div className="rounded-lg bg-slate-100 p-2">Streak: {streak}</div>
       </div>
@@ -218,6 +217,8 @@ export default function TimedChoicesGame({ title, storageKey, prompts }: TimedCh
         <div className="mt-6 rounded-xl bg-emerald-50 p-4 text-emerald-900">
           <h2 className="text-xl font-bold">Session Complete</h2>
           <p className="mt-2">This round: {roundCorrect} correct in {roundAttempts} attempts</p>
+          <p>Correct on the first try: {firstTryCorrect} of {sessionPrompts.length} questions</p>
+          <p className="mt-2 text-sm">These are practice results. Revisit the skill with a different example to check understanding.</p>
           <p>Best streak this round: {roundBestStreak}</p>
           <p className="mt-2 text-sm">All-time correct: {stats[settings.ageTier]?.correctCount ?? 0}</p>
           <button
