@@ -7,7 +7,7 @@ const assetBasePath = process.env.GITHUB_PAGES === "true" && process.env.GEEK_JR
 
 const activities = [
   { number: "01", title: "Picture Cards", focus: "VOCABULARY", description: "See it. Say it. Remember it.", href: "/cards", icon: "🖼️", tint: "bg-amber-100" },
-  { number: "02", title: "Phonics Tap", focus: "SOUNDS", description: "Listen and find the sound.", href: "/phonics", icon: "🔤", tint: "bg-sky-100" },
+  { number: "02", title: "Reading Path", focus: "SOUNDS → READING", description: "Play with sounds. Blend words. Read together.", href: "/phonics", icon: "🔤", tint: "bg-sky-100" },
   { number: "03", title: "Memory Match", focus: "MATCHING & RECALL", description: "Match pictures. Build recall when ready.", href: "/memory", icon: "🧩", tint: "bg-emerald-100" },
   { number: "04", title: "Patterns & Logic", focus: "REASONING", description: "What comes next?", href: "/patterns", icon: "✦", tint: "bg-violet-100" },
   { number: "05", title: "Story Sequence", focus: "SEQUENCING", description: "Choose how the story goes.", href: "/stories", icon: "📖", tint: "bg-rose-100" },
