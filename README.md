@@ -15,7 +15,7 @@ The site is deployed with GitHub Pages at `geekjr.xyz`. The workflow uses the re
 </p>
 
 
-Geek Jr turns short practice sessions into a simple daily learning habit. Parents choose a learning level and session length; children can begin without an account. It grew from picture and word cards for the youngest learners.
+Geek Jr turns short practice sessions into a simple learning habit. Families can choose an age level on the home page and follow a three-activity starting path, or explore the full library. Parents can set the round length and optional content in Parent settings. Children can begin without an account.
 
 
 ## Activities
@@ -32,6 +32,8 @@ Geek Jr turns short practice sessions into a simple daily learning habit. Parent
 
 
 Content is organized into four age ranges: **1–2**, **3–4**, **5–7**, and **8–10**. The youngest range has visual prompts and no timer. This is a starter library, not a complete curriculum; parental guidance is recommended, especially for children who are not reading yet.
+
+Phonics Tap, Patterns & Logic, and Story Sequence each have ten core questions per age range, so the 3, 5, and 10 question round settings have enough content. Memory Match has ten pairs per range. Optional Bible story questions add one further Story Sequence prompt per range.
 
 
 ## Run the app
@@ -51,6 +53,7 @@ Open `http://localhost:3000`. The home page links to every activity and to **Par
 
 ```bash
 npm run lint
+npm run check:content
 npm run build
 ```
 

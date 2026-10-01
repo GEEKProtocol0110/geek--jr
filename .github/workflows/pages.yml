@@ -27,6 +27,7 @@ jobs:
           node-version: "20"
           cache: npm
       - run: npm ci
+      - run: npm run check:content
       - run: npm run build
       - run: node scripts/generate-legacy-redirects.mjs
       - run: touch out/.nojekyll

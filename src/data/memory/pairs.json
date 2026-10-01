@@ -1,20 +1,242 @@
 [
-  {"id":"dog","tier":"1-2","label":"Dog","visual":"🐶"},
-  {"id":"apple","tier":"1-2","label":"Apple","visual":"🍎"},
-  {"id":"sun","tier":"1-2","label":"Sun","visual":"☀️"},
-  {"id":"cat","tier":"3-4","label":"Cat","visual":"🐱"},
-  {"id":"star","tier":"3-4","label":"Star","visual":"⭐"},
-  {"id":"tree","tier":"3-4","label":"Tree","visual":"🌳"},
-  {"id":"fish","tier":"3-4","label":"Fish","visual":"🐟"},
-  {"id":"red","tier":"5-7","label":"Red","visual":"🔴"},
-  {"id":"blue","tier":"5-7","label":"Blue","visual":"🔵"},
-  {"id":"green","tier":"5-7","label":"Green","visual":"🟢"},
-  {"id":"yellow","tier":"5-7","label":"Yellow","visual":"🟡"},
-  {"id":"purple","tier":"5-7","label":"Purple","visual":"🟣"},
-  {"id":"planet","tier":"8-10","label":"Planet","visual":"🪐"},
-  {"id":"rocket","tier":"8-10","label":"Rocket","visual":"🚀"},
-  {"id":"compass","tier":"8-10","label":"Compass","visual":"🧭"},
-  {"id":"puzzle","tier":"8-10","label":"Puzzle","visual":"🧩"},
-  {"id":"lightning","tier":"8-10","label":"Lightning","visual":"⚡"},
-  {"id":"book","tier":"8-10","label":"Book","visual":"📚"}
+  {
+    "id": "dog",
+    "tier": "1-2",
+    "label": "Dog",
+    "visual": "🐶"
+  },
+  {
+    "id": "apple",
+    "tier": "1-2",
+    "label": "Apple",
+    "visual": "🍎"
+  },
+  {
+    "id": "sun",
+    "tier": "1-2",
+    "label": "Sun",
+    "visual": "☀️"
+  },
+  {
+    "id": "moon",
+    "tier": "1-2",
+    "label": "Moon",
+    "visual": "🌙"
+  },
+  {
+    "id": "bear",
+    "tier": "1-2",
+    "label": "Bear",
+    "visual": "🐻"
+  },
+  {
+    "id": "car",
+    "tier": "1-2",
+    "label": "Car",
+    "visual": "🚗"
+  },
+  {
+    "id": "flower",
+    "tier": "1-2",
+    "label": "Flower",
+    "visual": "🌼"
+  },
+  {
+    "id": "banana",
+    "tier": "1-2",
+    "label": "Banana",
+    "visual": "🍌"
+  },
+  {
+    "id": "ball",
+    "tier": "1-2",
+    "label": "Ball",
+    "visual": "⚽"
+  },
+  {
+    "id": "bird",
+    "tier": "1-2",
+    "label": "Bird",
+    "visual": "🐦"
+  },
+  {
+    "id": "cat",
+    "tier": "3-4",
+    "label": "Cat",
+    "visual": "🐱"
+  },
+  {
+    "id": "star",
+    "tier": "3-4",
+    "label": "Star",
+    "visual": "⭐"
+  },
+  {
+    "id": "tree",
+    "tier": "3-4",
+    "label": "Tree",
+    "visual": "🌳"
+  },
+  {
+    "id": "fish",
+    "tier": "3-4",
+    "label": "Fish",
+    "visual": "🐟"
+  },
+  {
+    "id": "house",
+    "tier": "3-4",
+    "label": "House",
+    "visual": "🏠"
+  },
+  {
+    "id": "frog",
+    "tier": "3-4",
+    "label": "Frog",
+    "visual": "🐸"
+  },
+  {
+    "id": "train",
+    "tier": "3-4",
+    "label": "Train",
+    "visual": "🚂"
+  },
+  {
+    "id": "boat",
+    "tier": "3-4",
+    "label": "Boat",
+    "visual": "⛵"
+  },
+  {
+    "id": "bee",
+    "tier": "3-4",
+    "label": "Bee",
+    "visual": "🐝"
+  },
+  {
+    "id": "leaf",
+    "tier": "3-4",
+    "label": "Leaf",
+    "visual": "🍃"
+  },
+  {
+    "id": "red",
+    "tier": "5-7",
+    "label": "Red",
+    "visual": "🔴"
+  },
+  {
+    "id": "blue",
+    "tier": "5-7",
+    "label": "Blue",
+    "visual": "🔵"
+  },
+  {
+    "id": "green",
+    "tier": "5-7",
+    "label": "Green",
+    "visual": "🟢"
+  },
+  {
+    "id": "yellow",
+    "tier": "5-7",
+    "label": "Yellow",
+    "visual": "🟡"
+  },
+  {
+    "id": "purple",
+    "tier": "5-7",
+    "label": "Purple",
+    "visual": "🟣"
+  },
+  {
+    "id": "orange",
+    "tier": "5-7",
+    "label": "Orange",
+    "visual": "🟠"
+  },
+  {
+    "id": "brown",
+    "tier": "5-7",
+    "label": "Brown",
+    "visual": "🟤"
+  },
+  {
+    "id": "heart",
+    "tier": "5-7",
+    "label": "Heart",
+    "visual": "❤️"
+  },
+  {
+    "id": "diamond",
+    "tier": "5-7",
+    "label": "Diamond",
+    "visual": "💎"
+  },
+  {
+    "id": "circle",
+    "tier": "5-7",
+    "label": "Circle",
+    "visual": "⚪"
+  },
+  {
+    "id": "planet",
+    "tier": "8-10",
+    "label": "Planet",
+    "visual": "🪐"
+  },
+  {
+    "id": "rocket",
+    "tier": "8-10",
+    "label": "Rocket",
+    "visual": "🚀"
+  },
+  {
+    "id": "compass",
+    "tier": "8-10",
+    "label": "Compass",
+    "visual": "🧭"
+  },
+  {
+    "id": "puzzle",
+    "tier": "8-10",
+    "label": "Puzzle",
+    "visual": "🧩"
+  },
+  {
+    "id": "lightning",
+    "tier": "8-10",
+    "label": "Lightning",
+    "visual": "⚡"
+  },
+  {
+    "id": "book",
+    "tier": "8-10",
+    "label": "Book",
+    "visual": "📚"
+  },
+  {
+    "id": "microscope",
+    "tier": "8-10",
+    "label": "Microscope",
+    "visual": "🔬"
+  },
+  {
+    "id": "telescope",
+    "tier": "8-10",
+    "label": "Telescope",
+    "visual": "🔭"
+  },
+  {
+    "id": "globe",
+    "tier": "8-10",
+    "label": "Globe",
+    "visual": "🌐"
+  },
+  {
+    "id": "magnet",
+    "tier": "8-10",
+    "label": "Magnet",
+    "visual": "🧲"
+  }
 ]
