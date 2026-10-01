@@ -1,10 +1,442 @@
 [
-  {"id":"ph1","tier":"1-2","prompt":"Tap the sound for letter B","choices":["buh","mmm","sss"],"correct":"buh"},
-  {"id":"ph2","tier":"1-2","prompt":"Tap the sound for letter M","choices":["zzz","mmm","tuh"],"correct":"mmm"},
-  {"id":"ph3","tier":"3-4","prompt":"Which starts 'sun'?","choices":["sss","buh","rrr"],"correct":"sss"},
-  {"id":"ph4","tier":"3-4","prompt":"Which starts 'cat'?","choices":["kuh","fff","lll"],"correct":"kuh"},
-  {"id":"ph5","tier":"5-7","prompt":"Pick the long A sound","choices":["ay","ah","eh"],"correct":"ay"},
-  {"id":"ph6","tier":"5-7","prompt":"Which chunk sounds like 'ship'?","choices":["sh","ch","th"],"correct":"sh"},
-  {"id":"ph7","tier":"8-10","prompt":"Which vowel team says 'ee'?","choices":["ea","oa","au"],"correct":"ea"},
-  {"id":"ph8","tier":"8-10","prompt":"Pick the soft C sound","choices":["s","k","g"],"correct":"s"}
+  {
+    "id": "ph1",
+    "tier": "1-2",
+    "prompt": "Tap the sound for letter B",
+    "choices": [
+      "buh",
+      "mmm",
+      "sss"
+    ],
+    "correct": "buh"
+  },
+  {
+    "id": "ph2",
+    "tier": "1-2",
+    "prompt": "Tap the sound for letter M",
+    "choices": [
+      "zzz",
+      "mmm",
+      "tuh"
+    ],
+    "correct": "mmm"
+  },
+  {
+    "id": "ph9",
+    "tier": "1-2",
+    "prompt": "Which word starts with B?",
+    "choices": [
+      "ball",
+      "sun",
+      "cat"
+    ],
+    "correct": "ball"
+  },
+  {
+    "id": "ph10",
+    "tier": "1-2",
+    "prompt": "Which word starts with D?",
+    "choices": [
+      "dog",
+      "apple",
+      "moon"
+    ],
+    "correct": "dog"
+  },
+  {
+    "id": "ph11",
+    "tier": "1-2",
+    "prompt": "Which word starts with S?",
+    "choices": [
+      "sun",
+      "fish",
+      "cup"
+    ],
+    "correct": "sun"
+  },
+  {
+    "id": "ph12",
+    "tier": "1-2",
+    "prompt": "Which word starts with C?",
+    "choices": [
+      "cat",
+      "bear",
+      "leaf"
+    ],
+    "correct": "cat"
+  },
+  {
+    "id": "ph13",
+    "tier": "1-2",
+    "prompt": "Which word starts with F?",
+    "choices": [
+      "fish",
+      "dog",
+      "hat"
+    ],
+    "correct": "fish"
+  },
+  {
+    "id": "ph14",
+    "tier": "1-2",
+    "prompt": "Which word starts with H?",
+    "choices": [
+      "hat",
+      "ball",
+      "egg"
+    ],
+    "correct": "hat"
+  },
+  {
+    "id": "ph15",
+    "tier": "1-2",
+    "prompt": "Which word starts with P?",
+    "choices": [
+      "pig",
+      "moon",
+      "sun"
+    ],
+    "correct": "pig"
+  },
+  {
+    "id": "ph16",
+    "tier": "1-2",
+    "prompt": "Which word starts with T?",
+    "choices": [
+      "tree",
+      "cat",
+      "fish"
+    ],
+    "correct": "tree"
+  },
+  {
+    "id": "ph3",
+    "tier": "3-4",
+    "prompt": "Which starts 'sun'?",
+    "choices": [
+      "sss",
+      "buh",
+      "rrr"
+    ],
+    "correct": "sss"
+  },
+  {
+    "id": "ph4",
+    "tier": "3-4",
+    "prompt": "Which starts 'cat'?",
+    "choices": [
+      "kuh",
+      "fff",
+      "lll"
+    ],
+    "correct": "kuh"
+  },
+  {
+    "id": "ph17",
+    "tier": "3-4",
+    "prompt": "Which letter starts 'moon'?",
+    "choices": [
+      "M",
+      "S",
+      "T"
+    ],
+    "correct": "M"
+  },
+  {
+    "id": "ph18",
+    "tier": "3-4",
+    "prompt": "Which letter starts 'fish'?",
+    "choices": [
+      "F",
+      "B",
+      "D"
+    ],
+    "correct": "F"
+  },
+  {
+    "id": "ph19",
+    "tier": "3-4",
+    "prompt": "Which word rhymes with cat?",
+    "choices": [
+      "hat",
+      "dog",
+      "sun"
+    ],
+    "correct": "hat"
+  },
+  {
+    "id": "ph20",
+    "tier": "3-4",
+    "prompt": "Which word rhymes with bee?",
+    "choices": [
+      "tree",
+      "cup",
+      "fish"
+    ],
+    "correct": "tree"
+  },
+  {
+    "id": "ph21",
+    "tier": "3-4",
+    "prompt": "Which word begins like ball?",
+    "choices": [
+      "bear",
+      "moon",
+      "cat"
+    ],
+    "correct": "bear"
+  },
+  {
+    "id": "ph22",
+    "tier": "3-4",
+    "prompt": "Which word begins like turtle?",
+    "choices": [
+      "top",
+      "fan",
+      "sun"
+    ],
+    "correct": "top"
+  },
+  {
+    "id": "ph23",
+    "tier": "3-4",
+    "prompt": "Which word ends like log?",
+    "choices": [
+      "dog",
+      "hat",
+      "sun"
+    ],
+    "correct": "dog"
+  },
+  {
+    "id": "ph24",
+    "tier": "3-4",
+    "prompt": "Which word rhymes with sun?",
+    "choices": [
+      "run",
+      "bed",
+      "cat"
+    ],
+    "correct": "run"
+  },
+  {
+    "id": "ph5",
+    "tier": "5-7",
+    "prompt": "Pick the long A sound",
+    "choices": [
+      "ay",
+      "ah",
+      "eh"
+    ],
+    "correct": "ay"
+  },
+  {
+    "id": "ph6",
+    "tier": "5-7",
+    "prompt": "Which chunk sounds like 'ship'?",
+    "choices": [
+      "sh",
+      "ch",
+      "th"
+    ],
+    "correct": "sh"
+  },
+  {
+    "id": "ph25",
+    "tier": "5-7",
+    "prompt": "Which letters start 'chair'?",
+    "choices": [
+      "ch",
+      "sh",
+      "th"
+    ],
+    "correct": "ch"
+  },
+  {
+    "id": "ph26",
+    "tier": "5-7",
+    "prompt": "Which word rhymes with light?",
+    "choices": [
+      "night",
+      "leaf",
+      "moon"
+    ],
+    "correct": "night"
+  },
+  {
+    "id": "ph27",
+    "tier": "5-7",
+    "prompt": "Which word has the long E sound?",
+    "choices": [
+      "tree",
+      "bed",
+      "cat"
+    ],
+    "correct": "tree"
+  },
+  {
+    "id": "ph28",
+    "tier": "5-7",
+    "prompt": "Which word begins with the blend 'st'?",
+    "choices": [
+      "star",
+      "ship",
+      "tree"
+    ],
+    "correct": "star"
+  },
+  {
+    "id": "ph29",
+    "tier": "5-7",
+    "prompt": "Which letters end 'ring'?",
+    "choices": [
+      "ng",
+      "sh",
+      "ck"
+    ],
+    "correct": "ng"
+  },
+  {
+    "id": "ph30",
+    "tier": "5-7",
+    "prompt": "Which word has the short A sound?",
+    "choices": [
+      "map",
+      "cake",
+      "beet"
+    ],
+    "correct": "map"
+  },
+  {
+    "id": "ph31",
+    "tier": "5-7",
+    "prompt": "Which word starts with the same sound as frog?",
+    "choices": [
+      "flag",
+      "ship",
+      "boat"
+    ],
+    "correct": "flag"
+  },
+  {
+    "id": "ph32",
+    "tier": "5-7",
+    "prompt": "Which word ends with the same sound as duck?",
+    "choices": [
+      "rock",
+      "rain",
+      "dish"
+    ],
+    "correct": "rock"
+  },
+  {
+    "id": "ph7",
+    "tier": "8-10",
+    "prompt": "Which vowel team says 'ee'?",
+    "choices": [
+      "ea",
+      "oa",
+      "au"
+    ],
+    "correct": "ea"
+  },
+  {
+    "id": "ph8",
+    "tier": "8-10",
+    "prompt": "Pick the soft C sound",
+    "choices": [
+      "s",
+      "k",
+      "g"
+    ],
+    "correct": "s"
+  },
+  {
+    "id": "ph33",
+    "tier": "8-10",
+    "prompt": "Which word has the long O sound?",
+    "choices": [
+      "boat",
+      "box",
+      "hot"
+    ],
+    "correct": "boat"
+  },
+  {
+    "id": "ph34",
+    "tier": "8-10",
+    "prompt": "Which word has three syllables?",
+    "choices": [
+      "banana",
+      "garden",
+      "sun"
+    ],
+    "correct": "banana"
+  },
+  {
+    "id": "ph35",
+    "tier": "8-10",
+    "prompt": "Which pair has the same ending sound?",
+    "choices": [
+      "bright and night",
+      "boat and book",
+      "sun and soup"
+    ],
+    "correct": "bright and night"
+  },
+  {
+    "id": "ph36",
+    "tier": "8-10",
+    "prompt": "Which letters make the vowel sound in 'coin'?",
+    "choices": [
+      "oi",
+      "ai",
+      "ou"
+    ],
+    "correct": "oi"
+  },
+  {
+    "id": "ph37",
+    "tier": "8-10",
+    "prompt": "Which word starts with a silent letter?",
+    "choices": [
+      "knock",
+      "kite",
+      "nest"
+    ],
+    "correct": "knock"
+  },
+  {
+    "id": "ph38",
+    "tier": "8-10",
+    "prompt": "Which word has the same vowel sound as 'cloud'?",
+    "choices": [
+      "house",
+      "could",
+      "cold"
+    ],
+    "correct": "house"
+  },
+  {
+    "id": "ph39",
+    "tier": "8-10",
+    "prompt": "Which word has four syllables?",
+    "choices": [
+      "calculator",
+      "telephone",
+      "pencil"
+    ],
+    "correct": "calculator"
+  },
+  {
+    "id": "ph40",
+    "tier": "8-10",
+    "prompt": "Which word has the long I sound?",
+    "choices": [
+      "bright",
+      "brick",
+      "bring"
+    ],
+    "correct": "bright"
+  }
 ]
