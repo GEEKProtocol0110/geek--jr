@@ -1,14 +1,490 @@
 [
-  {"id":"st1","tier":"1-2","prompt":"First in bedtime: put on pajamas, then __","choices":["brush teeth","eat lunch","go outside"],"correct":"brush teeth"},
-  {"id":"st2","tier":"1-2","prompt":"After waking up, we __","choices":["go to sleep","eat breakfast","turn off sun"],"correct":"eat breakfast"},
-  {"id":"st3","tier":"3-4","prompt":"Plant story: seed, water, __","choices":["grow","melt","sleep"],"correct":"grow"},
-  {"id":"st4","tier":"3-4","prompt":"Rain day: clouds, rain, __","choices":["puddle","fire","snowman"],"correct":"puddle"},
-  {"id":"st5","tier":"5-7","prompt":"Write story order: plan, draft, __","choices":["revise","erase","sleep"],"correct":"revise"},
-  {"id":"st6","tier":"5-7","prompt":"School morning: wake, dress, __","choices":["breakfast","midnight snack","movie"],"correct":"breakfast"},
-  {"id":"st7","tier":"8-10","prompt":"Science steps: question, test, __","choices":["conclusion","nap","guess only"],"correct":"conclusion"},
-  {"id":"st8","tier":"8-10","prompt":"Team project: discuss, assign, __","choices":["build","quit","ignore"],"correct":"build"},
-  {"id":"faith1","tier":"1-2","pack":"christian","prompt":"Noah built a big __","choices":["boat","car","plane"],"correct":"boat"},
-  {"id":"faith2","tier":"3-4","pack":"christian","prompt":"In the Bible, Noah helped the animals into the __","choices":["ark","castle","bus"],"correct":"ark"},
-  {"id":"faith3","tier":"5-7","pack":"christian","prompt":"David faced Goliath with a sling and a __","choices":["stone","pencil","spoon"],"correct":"stone"},
-  {"id":"faith4","tier":"8-10","pack":"christian","prompt":"In the Good Samaritan story, the traveler stopped to __","choices":["help someone hurt","hide","go shopping"],"correct":"help someone hurt"}
+  {
+    "id": "st1",
+    "tier": "1-2",
+    "prompt": "First in bedtime: put on pajamas, then __",
+    "choices": [
+      "brush teeth",
+      "eat lunch",
+      "go outside"
+    ],
+    "correct": "brush teeth"
+  },
+  {
+    "id": "st2",
+    "tier": "1-2",
+    "prompt": "After waking up, we __",
+    "choices": [
+      "go to sleep",
+      "eat breakfast",
+      "turn off sun"
+    ],
+    "correct": "eat breakfast"
+  },
+  {
+    "id": "st9",
+    "tier": "1-2",
+    "prompt": "Before eating, wash your __",
+    "choices": [
+      "hands",
+      "shoes",
+      "toys"
+    ],
+    "correct": "hands"
+  },
+  {
+    "id": "st10",
+    "tier": "1-2",
+    "prompt": "First put on socks, then put on __",
+    "choices": [
+      "shoes",
+      "a hat",
+      "gloves"
+    ],
+    "correct": "shoes"
+  },
+  {
+    "id": "st11",
+    "tier": "1-2",
+    "prompt": "After the rain, we may see a __",
+    "choices": [
+      "puddle",
+      "sandcastle",
+      "snowflake"
+    ],
+    "correct": "puddle"
+  },
+  {
+    "id": "st12",
+    "tier": "1-2",
+    "prompt": "A seed gets water, then it can __",
+    "choices": [
+      "grow",
+      "sing",
+      "drive"
+    ],
+    "correct": "grow"
+  },
+  {
+    "id": "st13",
+    "tier": "1-2",
+    "prompt": "When we are thirsty, we drink __",
+    "choices": [
+      "water",
+      "a book",
+      "a shoe"
+    ],
+    "correct": "water"
+  },
+  {
+    "id": "st14",
+    "tier": "1-2",
+    "prompt": "After we draw a picture, we can __",
+    "choices": [
+      "show it",
+      "plant it",
+      "eat it"
+    ],
+    "correct": "show it"
+  },
+  {
+    "id": "st15",
+    "tier": "1-2",
+    "prompt": "First open a book, then turn a __",
+    "choices": [
+      "page",
+      "key",
+      "wheel"
+    ],
+    "correct": "page"
+  },
+  {
+    "id": "st16",
+    "tier": "1-2",
+    "prompt": "A caterpillar grows and becomes a __",
+    "choices": [
+      "butterfly",
+      "fish",
+      "flower"
+    ],
+    "correct": "butterfly"
+  },
+  {
+    "id": "st3",
+    "tier": "3-4",
+    "prompt": "Plant story: seed, water, __",
+    "choices": [
+      "grow",
+      "melt",
+      "sleep"
+    ],
+    "correct": "grow"
+  },
+  {
+    "id": "st4",
+    "tier": "3-4",
+    "prompt": "Rain day: clouds, rain, __",
+    "choices": [
+      "puddle",
+      "fire",
+      "snowman"
+    ],
+    "correct": "puddle"
+  },
+  {
+    "id": "st17",
+    "tier": "3-4",
+    "prompt": "To make a sandwich: get bread, add filling, then __",
+    "choices": [
+      "put slices together",
+      "plant bread",
+      "freeze a plate"
+    ],
+    "correct": "put slices together"
+  },
+  {
+    "id": "st18",
+    "tier": "3-4",
+    "prompt": "After we mix cake batter, we __",
+    "choices": [
+      "bake it",
+      "wash the flour",
+      "close the book"
+    ],
+    "correct": "bake it"
+  },
+  {
+    "id": "st19",
+    "tier": "3-4",
+    "prompt": "A tadpole grows, then becomes a __",
+    "choices": [
+      "frog",
+      "bird",
+      "tree"
+    ],
+    "correct": "frog"
+  },
+  {
+    "id": "st20",
+    "tier": "3-4",
+    "prompt": "First find a library book, then __",
+    "choices": [
+      "check it out",
+      "tear it up",
+      "hide it"
+    ],
+    "correct": "check it out"
+  },
+  {
+    "id": "st21",
+    "tier": "3-4",
+    "prompt": "When a toy breaks, ask a grown-up to __",
+    "choices": [
+      "help fix it",
+      "throw it at someone",
+      "paint the floor"
+    ],
+    "correct": "help fix it"
+  },
+  {
+    "id": "st22",
+    "tier": "3-4",
+    "prompt": "The sun sets, then it gets __",
+    "choices": [
+      "dark",
+      "noisy",
+      "hotter"
+    ],
+    "correct": "dark"
+  },
+  {
+    "id": "st23",
+    "tier": "3-4",
+    "prompt": "First brush your teeth, then __",
+    "choices": [
+      "rinse your mouth",
+      "eat toothpaste",
+      "put shoes in the sink"
+    ],
+    "correct": "rinse your mouth"
+  },
+  {
+    "id": "st24",
+    "tier": "3-4",
+    "prompt": "A friend drops blocks. We can help __",
+    "choices": [
+      "pick them up",
+      "scatter them",
+      "walk over them"
+    ],
+    "correct": "pick them up"
+  },
+  {
+    "id": "st5",
+    "tier": "5-7",
+    "prompt": "Write story order: plan, draft, __",
+    "choices": [
+      "revise",
+      "erase",
+      "sleep"
+    ],
+    "correct": "revise"
+  },
+  {
+    "id": "st6",
+    "tier": "5-7",
+    "prompt": "School morning: wake, dress, __",
+    "choices": [
+      "breakfast",
+      "midnight snack",
+      "movie"
+    ],
+    "correct": "breakfast"
+  },
+  {
+    "id": "st25",
+    "tier": "5-7",
+    "prompt": "To grow a plant: plant seed, water, then __",
+    "choices": [
+      "give it light",
+      "hide it in a box",
+      "pull it up"
+    ],
+    "correct": "give it light"
+  },
+  {
+    "id": "st26",
+    "tier": "5-7",
+    "prompt": "Before sharing a story: write, reread, then __",
+    "choices": [
+      "share it",
+      "erase everything",
+      "close your eyes"
+    ],
+    "correct": "share it"
+  },
+  {
+    "id": "st27",
+    "tier": "5-7",
+    "prompt": "A recipe says wash, chop, mix. What comes after chop?",
+    "choices": [
+      "mix",
+      "wash",
+      "serve"
+    ],
+    "correct": "mix"
+  },
+  {
+    "id": "st28",
+    "tier": "5-7",
+    "prompt": "On a bike ride: put on a helmet, then __",
+    "choices": [
+      "check the brakes",
+      "take off the helmet",
+      "cross without looking"
+    ],
+    "correct": "check the brakes"
+  },
+  {
+    "id": "st29",
+    "tier": "5-7",
+    "prompt": "First choose a library book, then read it, then __",
+    "choices": [
+      "return it",
+      "throw it away",
+      "paint it"
+    ],
+    "correct": "return it"
+  },
+  {
+    "id": "st30",
+    "tier": "5-7",
+    "prompt": "After solving a math problem, we can __",
+    "choices": [
+      "check the answer",
+      "ignore the question",
+      "hide the page"
+    ],
+    "correct": "check the answer"
+  },
+  {
+    "id": "st31",
+    "tier": "5-7",
+    "prompt": "The class plans a garden, plants seeds, then __",
+    "choices": [
+      "cares for them",
+      "forgets them",
+      "eats the dirt"
+    ],
+    "correct": "cares for them"
+  },
+  {
+    "id": "st32",
+    "tier": "5-7",
+    "prompt": "First notice a mistake, then __",
+    "choices": [
+      "try a new way",
+      "give up forever",
+      "blame a friend"
+    ],
+    "correct": "try a new way"
+  },
+  {
+    "id": "st7",
+    "tier": "8-10",
+    "prompt": "Science steps: question, test, __",
+    "choices": [
+      "conclusion",
+      "nap",
+      "guess only"
+    ],
+    "correct": "conclusion"
+  },
+  {
+    "id": "st8",
+    "tier": "8-10",
+    "prompt": "Team project: discuss, assign, __",
+    "choices": [
+      "build",
+      "quit",
+      "ignore"
+    ],
+    "correct": "build"
+  },
+  {
+    "id": "st33",
+    "tier": "8-10",
+    "prompt": "In an experiment: make a prediction, run a test, then __",
+    "choices": [
+      "record results",
+      "change the question afterward",
+      "skip observations"
+    ],
+    "correct": "record results"
+  },
+  {
+    "id": "st34",
+    "tier": "8-10",
+    "prompt": "For a group presentation: research, organize notes, then __",
+    "choices": [
+      "practice speaking",
+      "delete the notes",
+      "avoid the team"
+    ],
+    "correct": "practice speaking"
+  },
+  {
+    "id": "st35",
+    "tier": "8-10",
+    "prompt": "To revise a paragraph: read the draft, find unclear parts, then __",
+    "choices": [
+      "rewrite those parts",
+      "submit unchanged",
+      "remove every sentence"
+    ],
+    "correct": "rewrite those parts"
+  },
+  {
+    "id": "st36",
+    "tier": "8-10",
+    "prompt": "Before making a claim: gather evidence, then __",
+    "choices": [
+      "explain how it supports the claim",
+      "copy a guess",
+      "ignore other facts"
+    ],
+    "correct": "explain how it supports the claim"
+  },
+  {
+    "id": "st37",
+    "tier": "8-10",
+    "prompt": "A team notices a bug, reproduces it, then __",
+    "choices": [
+      "tests a fix",
+      "pretends it is gone",
+      "deletes the project"
+    ],
+    "correct": "tests a fix"
+  },
+  {
+    "id": "st38",
+    "tier": "8-10",
+    "prompt": "After borrowing a book, read it and then __",
+    "choices": [
+      "return it on time",
+      "keep it without asking",
+      "hide it"
+    ],
+    "correct": "return it on time"
+  },
+  {
+    "id": "st39",
+    "tier": "8-10",
+    "prompt": "To plan a trip: choose a place, check the route, then __",
+    "choices": [
+      "pack what you need",
+      "leave without telling anyone",
+      "forget the map"
+    ],
+    "correct": "pack what you need"
+  },
+  {
+    "id": "st40",
+    "tier": "8-10",
+    "prompt": "When a classmate disagrees: listen, ask why, then __",
+    "choices": [
+      "respond respectfully",
+      "shout over them",
+      "walk away angry"
+    ],
+    "correct": "respond respectfully"
+  },
+  {
+    "id": "faith1",
+    "tier": "1-2",
+    "pack": "christian",
+    "prompt": "Noah built a big __",
+    "choices": [
+      "boat",
+      "car",
+      "plane"
+    ],
+    "correct": "boat"
+  },
+  {
+    "id": "faith2",
+    "tier": "3-4",
+    "pack": "christian",
+    "prompt": "In the Bible, Noah helped the animals into the __",
+    "choices": [
+      "ark",
+      "castle",
+      "bus"
+    ],
+    "correct": "ark"
+  },
+  {
+    "id": "faith3",
+    "tier": "5-7",
+    "pack": "christian",
+    "prompt": "David faced Goliath with a sling and a __",
+    "choices": [
+      "stone",
+      "pencil",
+      "spoon"
+    ],
+    "correct": "stone"
+  },
+  {
+    "id": "faith4",
+    "tier": "8-10",
+    "pack": "christian",
+    "prompt": "In the Good Samaritan story, the traveler stopped to __",
+    "choices": [
+      "help someone hurt",
+      "hide",
+      "go shopping"
+    ],
+    "correct": "help someone hurt"
+  }
 ]
