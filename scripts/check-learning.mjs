@@ -72,3 +72,49 @@ for (const lesson of WORD_LESSONS) {
   }
 }
 console.log('Learning checks: answer positions, review dates, independent skill observations, legacy progress, and all 20 picture words passed');
+
+const { READING_LESSONS, READING_SKILLS, SOUND_CUES, recordReading, cleanReadingProgress, lessonReady, suggestedReadingLesson } = await loadTypeScript('src/lib/reading.ts');
+const taught = new Set();
+const helpers = new Set();
+const ids = new Set();
+for (const lesson of READING_LESSONS) {
+  assert.ok(!ids.has(lesson.id), 'Reading lesson IDs must be unique');
+  ids.add(lesson.id);
+  for (const letter of lesson.letters) {
+    assert.ok(SOUND_CUES[letter], `Missing parent sound cue: ${letter}`);
+    assert.ok(!taught.has(letter), `Letter ${letter} introduced twice`);
+    taught.add(letter);
+  }
+  lesson.helperWords.forEach((word) => helpers.add(word));
+  for (const word of [...lesson.words, lesson.checkWord, ...lesson.text.join(' ').toLowerCase().match(/[a-z]+/g)]) {
+    if (helpers.has(word)) continue;
+    assert.ok([...word].every((letter) => taught.has(letter)), `${lesson.id}: ${word} includes untaught letters`);
+    // Reject accidental digraphs or long-vowel patterns in this short-vowel sequence.
+    assert.ok(!/(sh|ch|th|ph|ng|ee|ea|oa|ai|ay|igh|oo|ou|ow)/.test(word), `${lesson.id}: ${word} requires an untaught spelling`);
+  }
+  assert.ok(!lesson.words.includes(lesson.checkWord), 'The transfer word must not be in its practice list');
+  assert.ok(!lesson.text.join(' ').toLowerCase().match(/[a-z]+/g).includes(lesson.checkWord), 'The transfer word must not appear in its reading text');
+  assert.ok(lesson.question && lesson.answer, 'Connected text needs a comprehension discussion');
+}
+assert.equal(READING_LESSONS.length, 8);
+assert.equal(taught.size, 25);
+assert.deepEqual([...helpers], ['a']);
+assert.equal(suggestedReadingLesson({}), 0);
+const independent = Object.fromEntries(READING_SKILLS.map((skill) => [skill.id, 'independent']));
+let reading = recordReading({}, 'satpin', independent, now);
+assert.equal(lessonReady(reading, 'satpin'), false, 'One day is not two-day evidence');
+reading = recordReading(reading, 'satpin', independent, now + 1000);
+assert.equal(reading.satpin.blend.independentDays.length, 1, 'Repeated saves on one day cannot inflate review evidence');
+reading = recordReading(reading, 'satpin', independent, now + day);
+assert.equal(lessonReady(reading, 'satpin'), true);
+assert.equal(suggestedReadingLesson(reading), 1);
+const helped = recordReading(reading, 'satpin', { blend: 'with-help' }, now + 2 * day);
+assert.equal(helped.satpin.blend.independentDays.length, 0, 'A new need for help resets that skill’s count');
+assert.equal(helped.satpin.text.independentDays.length, 2, 'Other skill evidence is preserved');
+assert.equal(suggestedReadingLesson(helped), 0);
+assert.equal(reading.satpin.blend.level, 'independent', 'Saving must not mutate old progress');
+assert.deepEqual(cleanReadingProgress({ satpin: { blend: { level: 'fake', date: 1, independentDays: [] } }, unknown: {} }), {});
+assert.deepEqual(cleanReadingProgress(reading), reading);
+const phonics = JSON.parse(await readFile('src/data/phonics/sounds.json', 'utf8'));
+assert.ok(!phonics.some((prompt) => prompt.choices.some((choice) => ['buh', 'kuh', 'tuh', 'mmm', 'sss', 'fff', 'rrr', 'zzz'].includes(choice))), 'Quiz choices must not use synthetic pseudo-phonemes');
+console.log('Reading checks: taught-letter coverage, transfer words, helper words, sound cues, two-day observations, regressions, and invalid storage passed');

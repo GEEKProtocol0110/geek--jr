@@ -18,11 +18,11 @@ const paths: Record<AgeTier, { href: string; title: string; focus: string }[]> =
   ],
   "3-4": [
     { href: "/first-words", title: "First Words", focus: "Build vocabulary" },
-    { href: "/phonics", title: "Phonics Tap", focus: "Hear the sounds" },
+    { href: "/phonics", title: "Reading Path", focus: "Play with sounds; try print when ready" },
     { href: "/memory", title: "Memory Match", focus: "Find a pair" },
   ],
   "5-7": [
-    { href: "/phonics", title: "Phonics Tap", focus: "Explore sounds" },
+    { href: "/phonics", title: "Reading Path", focus: "Blend, build, and read together" },
     { href: "/patterns", title: "Patterns & Logic", focus: "Spot what comes next" },
     { href: "/stories", title: "Story Sequence", focus: "Put ideas in order" },
   ],

@@ -2,24 +2,24 @@
   {
     "id": "ph1",
     "tier": "1-2",
-    "prompt": "Tap the sound for letter B",
+    "prompt": "Which letter starts ball?",
     "choices": [
-      "buh",
-      "mmm",
-      "sss"
+      "B",
+      "M",
+      "S"
     ],
-    "correct": "buh"
+    "correct": "B"
   },
   {
     "id": "ph2",
     "tier": "1-2",
-    "prompt": "Tap the sound for letter M",
+    "prompt": "Which letter starts moon?",
     "choices": [
-      "zzz",
-      "mmm",
-      "tuh"
+      "Z",
+      "M",
+      "T"
     ],
-    "correct": "mmm"
+    "correct": "M"
   },
   {
     "id": "ph9",
@@ -112,24 +112,24 @@
   {
     "id": "ph3",
     "tier": "3-4",
-    "prompt": "Which starts 'sun'?",
+    "prompt": "Which letter starts sun?",
     "choices": [
-      "sss",
-      "buh",
-      "rrr"
+      "S",
+      "B",
+      "R"
     ],
-    "correct": "sss"
+    "correct": "S"
   },
   {
     "id": "ph4",
     "tier": "3-4",
-    "prompt": "Which starts 'cat'?",
+    "prompt": "Which letter starts cat?",
     "choices": [
-      "kuh",
-      "fff",
-      "lll"
+      "C",
+      "F",
+      "L"
     ],
-    "correct": "kuh"
+    "correct": "C"
   },
   {
     "id": "ph17",
@@ -222,13 +222,13 @@
   {
     "id": "ph5",
     "tier": "5-7",
-    "prompt": "Pick the long A sound",
+    "prompt": "Which word has a long A vowel?",
     "choices": [
-      "ay",
-      "ah",
-      "eh"
+      "cake",
+      "cat",
+      "bed"
     ],
-    "correct": "ay"
+    "correct": "cake"
   },
   {
     "id": "ph6",

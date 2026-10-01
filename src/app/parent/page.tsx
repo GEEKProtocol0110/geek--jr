@@ -6,6 +6,7 @@ import { DEFAULT_SETTINGS, loadSettings, saveSettings } from "@/lib/settings";
 import { loadFromStorage } from "@/lib/storage";
 import { FIRST_WORDS_KEY, OBSERVATION_LEVELS, WORD_SKILLS, WordCardProgress } from "@/lib/firstWords";
 import words from "@/data/decks/first-words.json";
+import { cleanReadingProgress, READING_KEY, READING_LESSONS, READING_SKILLS, ReadingProgress } from "@/lib/reading";
 import { AgeTier, GameStatsByTier, GeekJrSettings, SessionSize, TimeLimitSec } from "@/lib/types";
 
 const AGE_TIERS: AgeTier[] = ["1-2", "3-4", "5-7", "8-10"];
@@ -13,7 +14,7 @@ const SESSION_SIZES: SessionSize[] = [3, 5, 10];
 const TIME_LIMITS: TimeLimitSec[] = [0, 60, 120, 180];
 
 const GAME_KEYS = [
-  { id: "phonics", label: "Phonics Tap", key: "geekjr_stats_phonics_v1" },
+  { id: "phonics", label: "Letter & word quiz", key: "geekjr_stats_phonics_v1" },
   { id: "memory", label: "Memory Match", key: "geekjr_stats_memory_v2" },
   { id: "patterns", label: "Patterns & Logic", key: "geekjr_stats_patterns_v1" },
   { id: "stories", label: "Story Sequence", key: "geekjr_stats_stories_v1" },
@@ -41,10 +42,12 @@ export default function ParentPage() {
   const [practicedCards, setPracticedCards] = useState(0);
   const [practicedWords, setPracticedWords] = useState(0);
   const [wordProgress, setWordProgress] = useState<Record<string, WordCardProgress>>({});
+  const [readingProgress, setReadingProgress] = useState<ReadingProgress>({});
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
       setSettings(loadSettings());
+      setReadingProgress(cleanReadingProgress(loadFromStorage<unknown>(READING_KEY, {})));
       setPracticedCards(Object.keys(loadFromStorage<Record<string, 1 | 2 | 3>>("geekjr_cards_leitner_v1", {})).length);
       const savedWords = loadFromStorage<Record<string, WordCardProgress>>(FIRST_WORDS_KEY, {});
       setWordProgress(savedWords);
@@ -166,6 +169,20 @@ export default function ParentPage() {
           ) : <p className="mt-4 text-sm text-teal-900">Start a First Words lesson and record only the skills you observe.</p>}
           <Link href="/first-words" className="mt-4 inline-block min-h-12 rounded-lg bg-teal-800 px-4 py-3 font-bold text-white">Practice First Words</Link>
           <p className="mt-3 text-xs text-teal-900">These observations describe familiar words. Print recognition does not demonstrate decoding unfamiliar words. All progress stays in this browser; clearing site data removes it.</p>
+        </div>
+        <div className="mt-5 rounded-xl border border-sky-200 bg-sky-50 p-4">
+          <h3 className="text-lg font-bold text-slate-950">Reading Path observations</h3>
+          <p className="mt-2 text-sm text-slate-700">Sound knowledge, blending a new word, spelling, and reading with understanding are recorded separately. These are parent observations, not quiz scores or a reading-age assessment.</p>
+          {Object.keys(readingProgress).length ? <div className="mt-4 overflow-x-auto"><table className="w-full text-left text-sm">
+            <caption className="mb-2 text-left font-bold">Latest reading observations</caption>
+            <thead><tr><th className="p-2">Lesson</th>{READING_SKILLS.map((skill) => <th key={skill.id} className="p-2">{skill.label}</th>)}</tr></thead>
+            <tbody>{READING_LESSONS.filter((lesson) => readingProgress[lesson.id]).map((lesson) => <tr key={lesson.id} className="border-t border-sky-200">
+              <th scope="row" className="p-2"><Link className="underline" href={`/phonics?lesson=${lesson.id}`}>{lesson.title}</Link></th>
+              {READING_SKILLS.map((skill) => { const observation = readingProgress[lesson.id][skill.id]; return <td key={skill.id} className="p-2">{observation ? <>{observation.level === "independent" ? "On their own" : observation.level === "with-help" ? "With help" : "Not yet"}<span className="block text-xs text-slate-500">{new Date(observation.date).toLocaleDateString()} · {observation.independentDays.length} independent day{observation.independentDays.length === 1 ? "" : "s"}</span></> : "Not observed"}</td>; })}
+            </tr>)}</tbody>
+          </table></div> : <p className="mt-4 text-sm text-slate-700">No reading observations yet. Begin with listening and talking, then try letters when ready.</p>}
+          <Link href="/phonics" className="mt-4 inline-block min-h-12 rounded-lg bg-teal-800 px-4 py-3 font-bold text-white">Open Reading Path</Link>
+          <p className="mt-3 text-xs text-slate-600">Review suggestions require independent observations on two different days for each skill. Needing help resets that skill’s review count. This is a practice rule, not proof of mastery. Records stay on this device and are not separate child profiles.</p>
         </div>
         <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {GAME_KEYS.map((game) => {
