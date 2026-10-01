@@ -24,7 +24,7 @@ Geek Jr turns short practice sessions into a simple learning habit. Families can
 | Activity | What happens |
 | --- | --- |
 | **Picture Cards** | See a picture or prompt, hear a word, and mark it “Got it” or “Need practice” |
-| **Phonics Tap** | Hear a prompt or choice, then pick the matching sound |
+| **Reading Path** | Parent sound play, eight guided sound-to-reading lessons, spelling, connected text, and optional letter/word quiz |
 | **Memory Match** | Match visible picture pairs for toddlers; flip cards for older learners |
 | **Patterns & Logic** | Choose what comes next |
 | **Story Sequence** | Complete a short sequence; optional Bible story questions |
@@ -33,7 +33,7 @@ Geek Jr turns short practice sessions into a simple learning habit. Families can
 
 Content is organized into four age ranges: **1–2**, **3–4**, **5–7**, and **8–10**. The youngest range has visual prompts and no timer. This is a starter library, not a complete curriculum; parental guidance is recommended, especially for children who are not reading yet.
 
-Phonics Tap, Patterns & Logic, and Story Sequence each have ten core questions per age range, so the 3, 5, and 10 question round settings have enough content. Memory Match has ten pairs per range. Optional Bible story questions add one further Story Sequence prompt per range.
+The optional letter/word quiz, Patterns & Logic, and Story Sequence each have ten core questions per age range, so the 3, 5, and 10 question round settings have enough content. Memory Match has ten pairs per range. Optional Bible story questions add one further Story Sequence prompt per range.
 
 
 ## Run the app
@@ -95,3 +95,15 @@ Parent observations distinguish understanding, saying/attempting a word, and opt
 Reviews show due words before new ones without filling rounds with future reviews. An explicit extra-practice action allows early repetition. All ages can choose no timer; ages 1–2 always use no timer and visible-picture matching. Multiple-choice answers are shuffled within each question, with first-try results shown separately.
 
 `npm run check:content` covers the activity datasets plus answer shuffling, review intervals, observation independence, legacy-progress preservation, and lesson illustration coverage. The parent dashboard shows the latest observations and a recent-word table. No account or microphone is needed.
+
+## Guided Reading Path
+
+The existing `/phonics` route now starts with a parent-guided reading path. Ages 1–2 begin in Listen & play: noticing sounds, turn-taking, songs, and real-world language. Parents can deliberately choose Letters & words at any age when ready. The eight original starter lessons introduce `s a t p i n`, then `m d`, `o g c k`, `e r`, `u h b`, `f l`, `j v w`, and `y z x`. They cover 25 single letters and five short vowels; x represents two sounds. This is a starter sequence, not a complete phonics curriculum.
+
+Each lesson includes parent pronunciation cues, guided blending, letter building from a dictated word, short text using already introduced letters, a comprehension discussion, and an unused practice-list word for a fresh decoding observation. The helper word `a` is explicitly introduced separately before it appears in text. The first lessons use brief lines; later ones use two linked sentences.
+
+Four skills have separate parent observations: letter sounds, fresh-word blending, spelling, and reading with understanding. Independent observations on two different days guide review suggestions; same-day saves cannot inflate that count. A need for help resets only that skill's count. This is a practice rule, not a validated mastery test. Saved observations are local, shared on the device, and shown in Parent settings; quiz scores never become reading evidence. Parents may choose any lesson regardless of suggestions. The site explains when browser storage cannot save a reading observation.
+
+There is no device phoneme playback or hosted professional phonics audio in this path. Parent modeling is supported by an outbound link to [Oxford Owl's teacher pronunciation and blending videos](https://home.oxfordowl.co.uk/phonics-videos/); no third-party video is embedded or loaded automatically, and no recording is copied. The old synthetic pseudo-phoneme quiz choices have been replaced with letter/word questions. The optional quiz retains its prior storage key. Licensed, educator-reviewed recordings remain a future requirement.
+
+The lesson approach draws on the [IES K–3 foundational reading guide](https://ies.ed.gov/ncee/wwc/PracticeGuide/21): linking sounds to print, decoding and writing, and connected text. That evidence concerns kindergarten–grade 3, not independent reading at age one. Geek Jr's new lessons have not been validated in a learning trial. Content checks verify taught-letter coverage, helper words, transfer-word separation, pronunciation cue coverage, and progress rules.
